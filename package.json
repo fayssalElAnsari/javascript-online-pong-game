@@ -13,5 +13,8 @@
     "url": "https://gitlab-etu.fil.univ-lille1.fr/elansari/tps-jsfs.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
