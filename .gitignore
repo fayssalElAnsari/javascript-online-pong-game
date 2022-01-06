@@ -24,6 +24,9 @@
 *.tar.gz
 *.rar
 
+# vscode
+.vscode/
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
@@ -553,3 +556,4 @@ $RECYCLE.BIN/
 node_modules/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,vs,java,node
+install_nodejs.sh
