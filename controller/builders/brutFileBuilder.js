@@ -1,6 +1,6 @@
 import fs from 'fs';
 import ResponseBuilder from "./responseBuilder.js";
-import ErrorPage from "./errorPage.js";
+import ErrorPage from "./page/errorPage.js";
 
 export default class BrutFileBuilder extends ResponseBuilder{
 
@@ -21,6 +21,5 @@ export default class BrutFileBuilder extends ResponseBuilder{
         }
         
     }
-
 
 }

@@ -1,4 +1,4 @@
-import ResponseBuilder from "./responseBuilder.js";
+import ResponseBuilder from "../responseBuilder.js";
 
 
 export default class HtmlPage extends ResponseBuilder {

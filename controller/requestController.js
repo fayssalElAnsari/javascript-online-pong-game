@@ -1,10 +1,11 @@
 import { URL } from 'url';
-import ErrorPage from './errorPage.js';
-import FirstPage from './firstPage.js';
-import SecondPage from './secondPage.js';
-import JsonBuilder from './jsonBuilder.js';
-import RandomPage from './randomPage.js';
-import BrutFileBuilder from './brutFileBuilder.js';
+
+import ErrorPage from './builders/page/errorPage.js';
+import FirstPage from './builders/page/firstPage.js';
+import SecondPage from './builders/page/secondPage.js';
+import JsonBuilder from './builders/jsonBuilder.js';
+import RandomPage from './builders/page/randomPage.js';
+import BrutFileBuilder from './builders/brutFileBuilder.js';
 
 export default class RequestController {
   static BASE = 'http://localhost/';

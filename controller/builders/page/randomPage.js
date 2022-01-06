@@ -1,4 +1,4 @@
-import JsonBuilder from "./jsonBuilder.js";
+import JsonBuilder from "../jsonBuilder.js";
 
 export default class RandomPage extends JsonBuilder {
 
