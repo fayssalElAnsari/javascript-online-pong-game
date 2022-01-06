@@ -1,4 +1,9 @@
 import { URL } from 'url';
+import ErrorPage from './errorPage.js';
+import FirstPage from './firstPage.js';
+import SecondPage from './secondPage.js';
+import JsonBuilder from './jsonBuilder.js';
+import RandomPage from './randomPage.js';
 
 export default class RequestController {
   static BASE = 'http://localhost/';
@@ -10,8 +15,6 @@ export default class RequestController {
   constructor(request, response) {
     this.#request = request,
     this.#response = response;
-    this.#url = new URL(request.url, `http://${request.headers.host}`);
-
   }
 
   get response() {
@@ -19,40 +22,25 @@ export default class RequestController {
   }
 
   handleRequest() {
-    const url = new URL(this.#request = req);
-    this.prepareResponse();
-    this.buildResponse();
+    this.#url = new URL(this.#request.url, RequestController.BASE);
+    const path = this.#url.pathname;
+    this.route(path, this.#request, this.#response, this.#url);
+    this.#response.end();
   }
 
-  prepareResponse() {
-    this.response.statusCode = 200;
-    this.response.setHeader( 'Content-Type' , 'text/html');
+  route(path, request, response, url){
+    if(path == '/first'){
+      new FirstPage(request, response).buildResponse();
+    } else if(path == '/second'){
+      new SecondPage(request, response).buildResponse();
+    } else if(path.startsWith('/json')){
+      new JsonBuilder(request, response, url).buildResponse();
+    } else  if (path == '/random') {
+      new RandomPage(request, response).buildResponse();
+    } else {
+      new ErrorPage(request, response).buildResponse();
+    }
   }
 
-  buildResponse()  {
-    const nameValue = this.#url.searchParams.get('name') || 'unknown';
-    // the classes will edit the response
-    // there will be 2 types of classes
-
-    this.response.write('<h1>TP1</h1>');
-
-    // routage "à la main"
-    if (this.#url.pathname == '/') {
-        this.response.write(`<h2>welcome home</h2>`);
-    }
-    else if (this.#url.pathname.startsWith('/first') ){
-
-    }
-      
-    else if (this.#url.pathname.startsWith('/second') )
-      this.response.write(`<p>Welcome to <strong>the second page</strong></p>`);
-    else if (this.#url.pathname.startsWith('/json') )
-      this.response.write(`<p>Welcome to <strong>${nameValue}</strong></p>`);
-    else  {
-      this.response.write(`<p>404 : page <strong>${this.#url}</strong> not found</p>`);
-    }
-    this.response.end();
-  
-  }
 
 }

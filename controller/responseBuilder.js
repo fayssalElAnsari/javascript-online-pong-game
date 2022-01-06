@@ -1,4 +1,3 @@
-import { URL } from 'url';
 
 export default class ResponseBuilder {
 
@@ -6,11 +5,12 @@ export default class ResponseBuilder {
     #response;
     #url;
     #contentType;
+    #status;
 
-    constructor(request, response, status=200, contentType) {
+    constructor(request, response, url) {
         this.#request = request;
-        this.response = response;
-        this.#contentType = contentType;
+        this.#response = response;
+        this.#url = url;
     }
 
     buildResponse(){
@@ -21,19 +21,52 @@ export default class ResponseBuilder {
 
     buildHeader(){
         this.#response.statusCode = this.#status;
-        this.#response.setHeader("Content-type", this.#contentType)
+        this.#response.setHeader("Content-Type", this.#contentType);
+        this.write("<html><head></head>");
     }
 
     buildBody(){
-
+        this.write("<body>");
     }
 
     buildFooter(){
-
+        
     }
 
     write(string){
         this.#response.write(string);
     }
 
+    get request(){
+        return this.#request;
+    }
+
+    get response(){
+        return this.#response;
+    }
+
+    set response(res){
+        this.#response = res
+    }
+
+    get url(){
+        return this.#url;
+    }
+
+    get status(){
+        return this.#status;
+    }
+
+    set status(st){
+        this.#status = st;
+    }
+
+    get contentType(){
+        return this.#contentType;
+    }
+
+    set contentType(ct){
+        this.#contentType = ct;
+    }
 }
+
