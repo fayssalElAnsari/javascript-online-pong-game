@@ -5,8 +5,7 @@ export default class JsonBuilder extends ResponseBuilder{
     buildHeader(){
         super.status = 200;
         super.contentType = 'application/json; charset=utf-8';
-        super.response.statusCode = super.status;
-        super.response.setHeader("Content-Type", super.contentType);
+        super.buildHeader();
     }
 
     buildBody(){

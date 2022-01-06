@@ -9,7 +9,7 @@ export default class HtmlPage extends ResponseBuilder {
     }
 
     buildFooter(){
-        super.response.write(`<footer>${new Date()}</footer></body></html>`)
+        super.response.write(`<footer class="ok">${new Date()}</footer></body></html>`)
     }
 
 }

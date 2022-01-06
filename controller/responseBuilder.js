@@ -22,11 +22,11 @@ export default class ResponseBuilder {
     buildHeader(){
         this.#response.statusCode = this.#status;
         this.#response.setHeader("Content-Type", this.#contentType);
-        this.write("<html><head></head>");
+        this.write(`<link href="./public/style/style.css" rel="stylesheet" type="text/css">`);
     }
 
     buildBody(){
-        this.write("<body>");
+        this.write("<html><head></head><body>");
     }
 
     buildFooter(){
@@ -46,7 +46,7 @@ export default class ResponseBuilder {
     }
 
     set response(res){
-        this.#response = res
+        this.#response = res;
     }
 
     get url(){
