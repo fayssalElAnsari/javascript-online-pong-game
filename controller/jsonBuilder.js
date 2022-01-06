@@ -17,7 +17,6 @@ export default class JsonBuilder extends ResponseBuilder{
         });
         jsonObj['date'] = `${new Date()}`;
         super.write(JSON.stringify(jsonObj));
-
     }
 
 }

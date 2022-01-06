@@ -4,6 +4,7 @@ import FirstPage from './firstPage.js';
 import SecondPage from './secondPage.js';
 import JsonBuilder from './jsonBuilder.js';
 import RandomPage from './randomPage.js';
+import BrutFileBuilder from './brutFileBuilder.js';
 
 export default class RequestController {
   static BASE = 'http://localhost/';
@@ -37,6 +38,8 @@ export default class RequestController {
       new JsonBuilder(request, response, url).buildResponse();
     } else  if (path == '/random') {
       new RandomPage(request, response).buildResponse();
+    } else if (path.startsWith('/public')) {
+      new BrutFileBuilder(request, response, url).buildResponse();
     } else {
       new ErrorPage(request, response).buildResponse();
     }
