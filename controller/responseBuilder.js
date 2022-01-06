@@ -22,7 +22,6 @@ export default class ResponseBuilder {
     buildHeader(){
         this.#response.statusCode = this.#status;
         this.#response.setHeader("Content-Type", this.#contentType);
-        this.write(`<link href="./public/style/style.css" rel="stylesheet" type="text/css">`);
     }
 
     buildBody(){
