@@ -1,6 +1,5 @@
 import ResponseBuilder from "../responseBuilder.js";
 
-
 export default class HtmlPage extends ResponseBuilder {
 
     buildHeader(){
