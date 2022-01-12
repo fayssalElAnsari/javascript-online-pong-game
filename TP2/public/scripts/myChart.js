@@ -42,7 +42,8 @@ window.addEventListener('DOMContentLoaded', setup);
 
 // création de la socket
 const socket = io();
-socket.on('randomNumber', user => { 
+
+socket.on('updateChart', user => { 
   document.getElementById("nb").innerText=`${user.nb}`;
   }
 );
