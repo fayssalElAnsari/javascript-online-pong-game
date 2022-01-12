@@ -4,10 +4,6 @@ const defaultValue = 1;
 const MIN_VALUE = 0;
 const MAX_VALUE = 10;
 
-// création de la socket
-const socket = io();
-
-
 const allLabels = new Array(nbValues).fill(defaultValue).map( (_,i) => String.fromCharCode('A'.charCodeAt(0)+i));
 //const allLabels = ['J','F','M','A','M','J','J','A','S','O','N','D'];
 
@@ -42,3 +38,13 @@ const setup = () => {
 }
 
 window.addEventListener('DOMContentLoaded', setup);
+/////////////////////
+
+// création de la socket
+const socket = io();
+socket.on('randomNumber', user => { 
+  document.getElementById("nb").innerText=`${user.nb}`;
+  }
+);
+
+

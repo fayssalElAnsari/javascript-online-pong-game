@@ -6,21 +6,16 @@ const server = http.createServer(
 	(request, response) => new RequestController(request, response).handleRequest()
 );
 
+function sendRandNb() {
+	return Math.round(Math.random() * 6 + 2);  
+}
+
 // définition de la fonction d'écoute exécutée à la connexion d'un nouveau socket
 const connectionListener = socket => {
-	function sendRandNb() {
-		 console.log(`${Math.random() * 20}`);  
-	}
+	console.log(`connection received from ${socket.id} at ${new Date().toLocaleTimeString()}`);
+	// envoi du message 'welcome' au client
+	setInterval(() => socket.broadcast.emit('randomNumber', { nb : sendRandNb() }), 2000);
 
-	setInterval(sendRandNb, 2000);
-
-	// abonnement au message 'greatings' émis par un client
-	socket.on('greetings',
-			  () => {
-				console.log(`greatings received from ${socket.id} at ${new Date().toLocaleTimeString()}`);
-				// envoi du message 'welcome' au client
-				socket.emit('welcome');
-			  });
   }
 
 const io = new ServerIO(server);
