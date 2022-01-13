@@ -1,12 +1,10 @@
 // fichier ./controllers/ioController.js (serveur)
 export default class IOController {
     #io;
-    #clients;
     #senders;
     
     constructor(io) {
       this.#io = io;
-      this.#clients = new Map();
       this.#senders = new Map();
     }
   
@@ -34,20 +32,13 @@ export default class IOController {
     }
   
     setupListeners(socket) {
-      // socket.on( 'greatings'  , user => this.greatings(socket, user.name) );
       socket.on( 'disconnect' , () => this.leave(socket) );
     }
   
-    greatings(socket, userName) {
-      console.log(`greatings received from ${userName} (id : ${socket.id})`);
-      this.#clients.set(socket.id, userName);
-      socket.emit('welcome');
-    }
-  
     leave(socket) {
-      const userName = 'unknown' || this.#clients.get(socket.id);
+      const userName = this.#senders.get(socket.id) || 'unknown';
       console.log(`disconnection from ${socket.id} (user : ${userName})`);
-      clearInterval(this.#senders.get(socket));
+      clearInterval(this.#senders.get(socket.id));// maintenant l'affichage des nombre s'arrete
     }
 
 
