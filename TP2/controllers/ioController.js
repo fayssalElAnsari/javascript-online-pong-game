@@ -2,11 +2,12 @@
 export default class IOController {
     #io;
     #clients;
+    
   
     constructor(io) {
       this.#io = io;
       this.#clients = new Map();
-      setInterval( this.randomColor.bind(this) , 5000 );
+      setInterval( this.sendRandNb.bind(this) , 1000 );
     }
   
     registerSocket(socket) {
@@ -29,4 +30,11 @@ export default class IOController {
       const userName = 'unknown' || this.#clients.get(socket.id);
       console.log(`disconnection from ${socket.id} (user : ${userName})`);
     }
+
+    sendRandNb() {
+      const nb = Math.round(Math.random() * 6 + 2);
+      this.#io.emit('updateChart', nb);
+    }
+
+
   }
