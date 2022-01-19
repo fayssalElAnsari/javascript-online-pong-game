@@ -39,9 +39,13 @@ fayssal@mypc:~$ git clone https://github.com/fayssalElAnsari/ToDo-List-with-Prio
 Le dossier `/client` contient notamment un dossier `src/` avec un certain nombre de ressources : code `HTML`, `feuille de style` et `images`. Mais aussi du code `javascipt` dans le dossier `scripts`:
 
     *   `scripts/pong.js` est le script principal, il est chargé par le fichier `index.html`. Ce script crée l'objet jeu à partir d'un canvas de la page et lance ou arrête le jeu après un clic sur le bouton `#start`.
+
     *   `scripts/Game.js` définit la classe `Game` qui est la classe principale pour le jeu. Un jeu est caractérisé par un `terrain de jeu` qui correspond à un objet `canvas` dans lequel le jeu est dessiné. Ce canvas est fourni à la construction. A un jeu correspond une animation (`raf`). Un jeu dispose d'un objet balle, initialement placé au centre du canvas. Sa méthode `start()` lance le jeu en démarrant l'animation (`animate()`).
+
     *   `scripts/Mobile.js` définit la classe Mobile. Un mobile dispose de coordonnées (`x`, `y`), d'une image (`img`). Il est possible de dessiner (`draw()`) l'image d'un mobile au point correspondant à ses coordonnées. Un mobile est également caratérisé par des `vitesses de déplacement` horizontale (`shiftX`) et verticale (`shiftY`), il peut se déplacer (`move()`), ce qui met à jour ses coorodonnées. La largeur (`width`) et hauteur (`height`) d'un mobile sont celles de son image.
+
     *   `scripts/Ball.js` définit la classe Ball. Une balle est un mobile dont le dessin est une balle et qui est placé dans un jeu (`theGame`) fourni à la construction. Lors de son déplacement, la balle reste dans les limites du terrain de jeu défini par le canvas du jeu en rebondissant sur les bords de ce terrain.
+    
     *   `/server` est le dossier pour le développement du code pour le serveur : vous y retrouvez une configuration initiale similaire à celle déjà rencontrée et dans laquelle le serveur web mis en place est en mesure de délivrer, telles qu'elles, les ressources statiques placées dans le dossier `server/public`.
 
 ## TODO
