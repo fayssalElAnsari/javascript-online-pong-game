@@ -19,7 +19,11 @@ L'objectif est de réaliser une version simplifiée de l'historique jeu `Pong`. 
 ## installation
 * récupérer le dépôt avec:
 ```console
-fayssal@mypc:~$ git clone https://github.com/fayssalElAnsari/ToDo-List-with-Priority-Time-and-Status.git
+fayssal@mypc:~$ git clone https://gitlab-etu.fil.univ-lille1.fr/elansari/JSFS4_L3_EL-ANSARI.git
+```
+* Acceder au directoire du projet:
+```console
+fayssal@mypc:~$ cd TP3
 ```
 * installer les paquets *Node.js* :
  ```console
