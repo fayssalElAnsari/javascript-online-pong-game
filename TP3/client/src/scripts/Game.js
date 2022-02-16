@@ -16,7 +16,7 @@ export default class Game {
     this.raf = null;
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
-    this.paddle = new Paddle(3 , 3, this);
+    this.paddle = new Paddle(10, 3, this);
   }
 
 

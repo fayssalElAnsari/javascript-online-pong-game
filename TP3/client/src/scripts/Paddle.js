@@ -1,6 +1,5 @@
 import Mobile from './Mobile.js';
 
-
 // default values for a Ball : image and shifts
 const BALL_IMAGE_SRC = './images/paddle.png';//paddle
 const SHIFT_X = 0;//sans mouvement horizontal
@@ -26,11 +25,11 @@ export default class Paddle extends Mobile {
 
   }
 
-      /**
-      * the result true / false depends on the moving state of the starship
-      * return true if moving up
-      */
-       getUp() {
+    /**
+     * the result true / false depends on the moving state of the starship
+     * return true if moving up
+     */
+    getUp() {
         return (this.moving == MoveState.UP);
     }
 
@@ -55,20 +54,23 @@ export default class Paddle extends Mobile {
     moveDown () {
       this.moving = MoveState.DOWN;
     }
-        /* Set the starship moving on None, sot the starship doesn't move */
+
+    /* Set the starship moving on None, sot the starship doesn't move */
     stopMoving(){
       this.moving = MoveState.NONE;
     }
+
     /* Move the starship Down or Up 
     * @param {*} myCanvas
     */
-    move(myCanvas){
+    move(){
+        console.log(this.y)
       if(this.getDown()){
-        this.y = Math.min(this.y + this.SHIFT_Y, myCanvas.height - this.img.height);
+        this.y = Math.min(this.y + this.shiftY, this.theGame.canvas.height - this.img.height);
       }
 
       if(this.getUp()){
-        this.y = Math.max(this.y - this.SHIFT_Y, 0);
+        this.y = Math.max(this.y - this.shiftY, 0);
       }
     }
 
