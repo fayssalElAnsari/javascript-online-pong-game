@@ -25,5 +25,6 @@ const startGame = theGame => {
     document.getElementById('start').value = 'jouer';
     theGame.stop();
   }
+  
   started = ! started;
 }
