@@ -15,7 +15,7 @@ export default class RequestController {
   constructor(request, response) {
     this.#request = request,
     this.#response = response;
-    this.#url = new URL(this.request.url,BASE).pathname;   // on ne considère que le "pathname" de l'URL de la requête
+    this.#url = new URL(this.request.url, BASE).pathname;   // on ne considère que le "pathname" de l'URL de la requête
   }
 
   get response() {

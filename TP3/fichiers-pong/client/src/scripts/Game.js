@@ -21,6 +21,7 @@ export default class Game {
   start() {
     this.animate();
   }
+
   /** stop this game animation */
   stop() {
     window.cancelAnimationFrame(this.raf);
@@ -31,6 +32,7 @@ export default class Game {
     this.moveAndDraw();
     this.raf = window.requestAnimationFrame(this.animate.bind(this));
   }
+  
   /** move then draw the bouncing ball */
   moveAndDraw() {
     const ctxt = this.canvas.getContext("2d");

@@ -13,7 +13,6 @@ const SHIFT_Y = 4;
 export default class Ball extends Mobile {
 
   /**  build a ball
-   *
    * @param  {number} x       the x coordinate
    * @param  {number} y       the y coordinate
    * @param  {Game} theGame   the Game this ball belongs to
