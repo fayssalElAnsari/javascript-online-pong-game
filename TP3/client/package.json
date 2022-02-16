@@ -2,14 +2,19 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "src/scripts/pong.js",
+  "main": "pong.js",
   "scripts": {
-    "start": "node src/scripts/pong.js"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev-server": "webpack serve"
   },
-  "author": "",
+  "author": "Fayssal",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.2"
+    "copy-webpack-plugin": "^10.2.4",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }
