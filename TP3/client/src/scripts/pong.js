@@ -7,6 +7,8 @@ const init = () => {
   const theGame = new Game(theField);
 
   document.getElementById('start').addEventListener("click", () => startGame(theGame) );
+  window.addEventListener('keydown', theGame.keyDownActionHandler.bind(theGame));
+  window.addEventListener('keyup', theGame.keyUpActionHandler.bind(theGame));
 }
 
 window.addEventListener("load",init);
@@ -25,6 +27,6 @@ const startGame = theGame => {
     document.getElementById('start').value = 'jouer';
     theGame.stop();
   }
-  
+
   started = ! started;
 }

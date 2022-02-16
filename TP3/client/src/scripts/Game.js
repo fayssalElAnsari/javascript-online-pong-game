@@ -44,8 +44,54 @@ export default class Game {
     // draw and move the ball
     this.ball.move();
     this.ball.draw(ctxt);
+    this.paddle.move(ctxt);
     this.paddle.draw(ctxt);
 
   }
+
+
+/**
+   * Handles key presses.
+   *
+   * If arrow up is pressed, the ship is set to move up.
+   * If arrow down is pressed, the ship is set to move down.
+   *
+   * @param {*} event the event triggered by pressing a key
+   */
+ keyDownActionHandler(event) {
+  switch (event.key) {
+        case " ":
+        break;
+        case "ArrowDown":
+        case "Down":
+            this.paddle.moveDown();
+            break;
+        case "ArrowUp":
+        case "Up":
+            this.paddle.moveUp();
+            break;
+        default: return;
+    }
+    event.preventDefault();
+  }
+  /**
+  * Handles key releases.
+  *
+  * @param {*} event the event triggered by pressing a key
+  */
+  keyUpActionHandler(event) {
+    switch (event.key) {
+      case "ArrowUp":
+      case "Up":
+      case "ArrowDown":
+      case "Down":
+      this.paddle.stopMoving();
+      break;
+      default: return;
+    }
+    event.preventDefault();
+  }
+
+
 
 }
