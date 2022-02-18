@@ -3,7 +3,7 @@ import Mobile from './Mobile.js';
 
 // default values for a Ball : image and shifts
 const BALL_IMAGE_SRC = './images/balle24.png';
-const SHIFT_X = 8;
+const SHIFT_X = 6;
 const SHIFT_Y = 4;
 
 
@@ -27,21 +27,24 @@ export default class Ball extends Mobile {
    * when moving a ball bounces inside the limit of its game's canvas
    */
   move() {
-    if (this.x <= 0){
-      this.stopMoving();
+    if (this.x <= 0  || this.x >= this.theGame.canvas.width){
+      // this.theGame.startGame(this.theGame);
+      
       // set the game state to stop
       // when the game stops the button should change and when the user presses
       // the ball is removed and the game restarts again
-      this.theGame.started = false;
+      this.theGame.stop();
+      // this.theGame.stop();
+    } else {
+      if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
+        this.shiftY = - this.shiftY;    // rebond en haut ou en bas
+      }
+      else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
+        this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
+      }
+      super.move();
     }
-
-    if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
-      this.shiftY = - this.shiftY;    // rebond en haut ou en bas
-    }
-    else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
-      this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
-    }
-    super.move();
+    
   }
 
   calculateNewShiftY(){

@@ -17,14 +17,13 @@ export default class Game {
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.paddle = new Paddle(10, 3, this);
+    this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, this.canvas.height - this.paddle.img.height - 3, this);
   }
-
 
   /** start this game animation */
   start() {
     this.animate();
   }
-
 
   /** stop this game animation */
   stop() {
@@ -46,8 +45,17 @@ export default class Game {
     this.ball.draw(ctxt);
     this.paddle.move(ctxt);
     this.paddle.draw(ctxt);
+    this.paddle2.move(ctxt);
+    this.paddle2.draw(ctxt);
 
     if(this.ball.collisionWith(this.paddle)){
+      this.ball.calculateNewShiftX();
+      this.ball.calculateNewShiftY();
+      // this.ball.shiftX = this.ball.calculateNewShiftX()
+      
+    }
+
+    if(this.ball.collisionWith(this.paddle2)){
       this.ball.calculateNewShiftX();
       this.ball.calculateNewShiftY();
       // this.ball.shiftX = this.ball.calculateNewShiftX()

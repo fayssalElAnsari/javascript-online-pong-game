@@ -14,7 +14,7 @@ const init = () => {
 
 window.addEventListener("load",init);
 
-// true iff game is started
+// true if game is started
 let started = false;
 /** start and stop a game
  * @param {Game} theGame - the game to start and stop
