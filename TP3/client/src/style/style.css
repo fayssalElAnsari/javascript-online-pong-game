@@ -13,6 +13,20 @@ h1 {
   color : white;
 }
 
+h2.highscore {
+  display: inline;
+  margin: 25px;
+}
+
+#score_p2 {
+  float: right;
+ 
+}
+
+#score_p1 {
+  float: left;
+}
+
 div#control {
   text-align : center;
   margin : 10px;

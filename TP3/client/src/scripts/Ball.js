@@ -34,7 +34,7 @@ export default class Ball extends Mobile {
       // the ball is removed and the game restarts again
       // this.theGame.stop();
       console.log("game stop :(");
-      // this.theGame.stop();
+      this.theGame.stop();
     } else {
       if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
         this.shiftY = - this.shiftY;    // rebond en haut ou en bas
@@ -62,7 +62,7 @@ export default class Ball extends Mobile {
    * @returns
    */
    collisionWith(paddlew){
-     console.log("collision ;)");
+    //  console.log("collision ;)");
     return paddlew.inSide(this.x,this.y);
   }
 
