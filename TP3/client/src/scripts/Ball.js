@@ -6,7 +6,6 @@ const BALL_IMAGE_SRC = './images/balle24.png';
 const SHIFT_X = 6;
 const SHIFT_Y = 4;
 
-
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
  */
@@ -27,13 +26,14 @@ export default class Ball extends Mobile {
    * when moving a ball bounces inside the limit of its game's canvas
    */
   move() {
-    if (this.x <= 0  || this.x >= this.theGame.canvas.width){
+    if (this.x <= 0  || this.x >= this.theGame.canvas.width - this.img.width){
       // this.theGame.startGame(this.theGame);
       
       // set the game state to stop
       // when the game stops the button should change and when the user presses
       // the ball is removed and the game restarts again
-      this.theGame.stop();
+      // this.theGame.stop();
+      console.log("game stop :(");
       // this.theGame.stop();
     } else {
       if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
@@ -62,6 +62,7 @@ export default class Ball extends Mobile {
    * @returns
    */
    collisionWith(paddlew){
+     console.log("collision ;)");
     return paddlew.inSide(this.x,this.y);
   }
 

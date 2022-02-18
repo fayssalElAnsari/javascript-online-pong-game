@@ -17,10 +17,10 @@ export default class Game {
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.paddle = new Paddle(10, 3, this);
-    this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, this.canvas.height - this.paddle.img.height - 3, this);
+    this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, 3, this);
   }
 
-  /** start this game animation */
+  /** start this game animation */  
   start() {
     this.animate();
   }
@@ -80,10 +80,12 @@ export default class Game {
         case "ArrowDown":
         case "Down":
             this.paddle.moveDown();
+            this.paddle2.moveDown();
             break;
         case "ArrowUp":
         case "Up":
             this.paddle.moveUp();
+            this.paddle2.moveUp();
             break;
         default: return;
     }
@@ -101,6 +103,7 @@ export default class Game {
       case "ArrowDown":
       case "Down":
       this.paddle.stopMoving();
+      this.paddle2.stopMoving();
       break;
       default: return;
     }
