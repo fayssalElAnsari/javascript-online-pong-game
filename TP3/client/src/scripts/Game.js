@@ -30,6 +30,10 @@ export default class Game {
     window.cancelAnimationFrame(this.raf);
   }
 
+  score(){
+    window.cancelAnimationFrame(this.raf);
+  }
+
   /** animate the game : move and draw */
   animate() {
     this.moveAndDraw();

@@ -26,24 +26,31 @@ export default class Ball extends Mobile {
    * when moving a ball bounces inside the limit of its game's canvas
    */
   move() {
-    if (this.x <= 0  || this.x >= this.theGame.canvas.width - this.img.width){
+    if (this.x <= 0){
       // this.theGame.startGame(this.theGame);
       
       // set the game state to stop
       // when the game stops the button should change and when the user presses
       // the ball is removed and the game restarts again
       // this.theGame.stop();
-      console.log("game stop :(");
-      this.theGame.stop();
-    } else {
-      if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
-        this.shiftY = - this.shiftY;    // rebond en haut ou en bas
-      }
-      else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
-        this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
-      }
-      super.move();
+      // console.log("P2 score :(");
+      document.getElementById('score_p2').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
+      this.theGame.score();
+    } else if (this.x >= this.theGame.canvas.width - this.img.width) {
+      // console.log("P1 score :(");
+      document.getElementById('score_p1').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
+      this.theGame.score();
+      
+    } 
+
+    if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
+      this.shiftY = - this.shiftY;    // rebond en haut ou en bas
     }
+    else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
+      this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
+    }
+    super.move();
+    
     
   }
 
