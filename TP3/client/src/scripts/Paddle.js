@@ -3,7 +3,7 @@ import Mobile from './Mobile.js';
 // default values for a Ball : image and shifts
 const BALL_IMAGE_SRC = './images/paddle.png';//paddle
 const SHIFT_X = 0;//sans mouvement horizontal
-const SHIFT_Y = 4;
+const SHIFT_Y = 8;
 
 //creer l'objet Movestate avec les 3 atrributs UP, DOWN et NONE
 const MoveState = { UP : 0, DOWN : 1, NONE : 2};
@@ -64,7 +64,6 @@ export default class Paddle extends Mobile {
     * @param {*} myCanvas
     */
     move(){
-        console.log(this.y)
       if(this.getDown()){
         this.y = Math.min(this.y + this.shiftY, this.theGame.canvas.height - this.img.height);
       }
@@ -74,19 +73,14 @@ export default class Paddle extends Mobile {
       }
     }
 
-  
-
-  /**
-   * when moving a ball bounces inside the limit of its game's canvas
+    /**
+   * return true if the shoot is inside the saucer false if not
+   * @param {*} otherX the other X position to be compared to this x position
+   * @param {*} otherY the other Y position to be compared this y position
+   * @returns
    */
-//   move() {
-//     if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
-//       this.shiftY = - this.shiftY;    // rebond en haut ou en bas
-//     }
-//     else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
-//       this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
-//     }
-//     super.move();
-//   }
+  inSide(otherX,otherY){
+    return (otherX >= this.x && otherX <=(this.x+this.img.width) && otherY >= this.y && otherY <= (this.y+this.img.height));
+  }
 
 }

@@ -17,7 +17,7 @@ export default class Ball extends Mobile {
    * @param  {number} y       the y coordinate
    * @param  {Game} theGame   the Game this ball belongs to
    */
-  constructor(x, y, theGame) {
+  constructor(x, y, theGame) {  
     super(x, y, BALL_IMAGE_SRC , SHIFT_X, SHIFT_Y);
     this.theGame = theGame;
   }
@@ -27,6 +27,14 @@ export default class Ball extends Mobile {
    * when moving a ball bounces inside the limit of its game's canvas
    */
   move() {
+    if (this.x <= 0){
+      this.stopMoving();
+      // set the game state to stop
+      // when the game stops the button should change and when the user presses
+      // the ball is removed and the game restarts again
+      this.theGame.started = false;
+    }
+
     if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
       this.shiftY = - this.shiftY;    // rebond en haut ou en bas
     }
@@ -34,6 +42,24 @@ export default class Ball extends Mobile {
       this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
     }
     super.move();
+  }
+
+  calculateNewShiftY(){
+
+  }
+
+  calculateNewShiftX(){
+    this.shiftX = -this.shiftX;
+  }
+
+
+  /**
+   * returns true if the shoot is in collision with the saucer
+   * @param {*} saucer
+   * @returns
+   */
+   collisionWith(paddlew){
+    return paddlew.inSide(this.x,this.y);
   }
 
 }
