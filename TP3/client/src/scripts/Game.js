@@ -32,6 +32,11 @@ export default class Game {
 
   score(){
     window.cancelAnimationFrame(this.raf);
+    this.restart();
+  }
+
+  restart(){
+    this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
   }
 
   /** animate the game : move and draw */

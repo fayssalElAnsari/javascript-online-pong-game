@@ -41,15 +41,15 @@ export default class Ball extends Mobile {
       document.getElementById('score_p1').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
       this.theGame.score();
       
-    } 
-
-    if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
-      this.shiftY = - this.shiftY;    // rebond en haut ou en bas
+    } else {
+      if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
+        this.shiftY = - this.shiftY;    // rebond en haut ou en bas
+      }
+      else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
+        this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
+      }
+      super.move();
     }
-    else if (this.x <= 0 || this.x + this.width >= this.theGame.canvas.width ) {
-      this.shiftX = - this.shiftX;    // rebond en gauche ou à droite
-    }
-    super.move();
     
     
   }
