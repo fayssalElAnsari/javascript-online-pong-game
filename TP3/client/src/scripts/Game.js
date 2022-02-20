@@ -58,16 +58,12 @@ export default class Game {
     this.paddle2.draw(ctxt);
 
     if(this.ball.collisionWith(this.paddle)){
-      this.ball.calculateNewShiftX();
-      this.ball.calculateNewShiftY();
-      // this.ball.shiftX = this.ball.calculateNewShiftX()
+      this.ball.calculateNewShift();
       
     }
 
     if(this.ball.collisionWith(this.paddle2)){
-      this.ball.calculateNewShiftX();
-      this.ball.calculateNewShiftY();
-      // this.ball.shiftX = this.ball.calculateNewShiftX()
+      this.ball.calculateNewShift();
       
     }
 

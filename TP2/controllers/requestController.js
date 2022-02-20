@@ -21,9 +21,11 @@ export default class RequestController {
   get response() {
     return this.#response;
   }
+
   get request() {
     return this.#request;
   }
+  
   get url() {
     return this.#url;
   }

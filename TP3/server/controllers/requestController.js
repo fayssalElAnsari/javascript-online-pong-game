@@ -3,17 +3,17 @@ import * as fs from 'fs/promises';
 import { getContentTypeFrom }  from '../scripts/contentTypeUtil.js';
 
 const BASE = 'http://localhost/';
+
 /**
 *  define a controller to retrieve static resources
 */
 export default class RequestController {
-
   #request;
   #response;
   #url;
 
   constructor(request, response) {
-    this.#request = request,
+    this.#request = request;
     this.#response = response;
     this.#url = new URL(this.request.url, BASE).pathname;   // on ne considère que le "pathname" de l'URL de la requête
   }

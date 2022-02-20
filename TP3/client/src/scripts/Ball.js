@@ -54,12 +54,26 @@ export default class Ball extends Mobile {
     
   }
 
-  calculateNewShiftY(){
+  /**
+   * on divise la paddle on 
+   */
 
-  }
+  calculateNewShift(){
+    let n = 4;
+    let partHeight = this.theGame.paddle.height/(n*2);
+    let paddleCenter = this.theGame.paddle.y + this.theGame.paddle.height/2;
+    let currentSeg = -n;
 
-  calculateNewShiftX(){
-    this.shiftX = -this.shiftX;
+    for(currentSeg; currentSeg <= n; currentSeg = currentSeg+1){
+      if(this.y <= paddleCenter + partHeight*currentSeg){
+        this.shiftY = currentSeg;
+      }
+    }
+
+    let n2 = 7;
+    this.shiftX = -Math.sign(this.shiftX) * Math.abs(n2 - Math.abs(this.shiftY));
+    // this.shiftX = -this.shiftX;
+    console.log(this.shiftX, this.shiftY);
   }
 
 
