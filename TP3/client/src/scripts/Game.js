@@ -15,6 +15,7 @@ export default class Game {
   constructor(canvas) {
     // création de la socket (connection client server)
     const socket = io('http://localhost:8080/'); 
+    socket.on( 'disble_start_btn' , () => this.disable_start_btn() );
 
     this.raf = null;
     this.canvas = canvas;
@@ -22,6 +23,10 @@ export default class Game {
     this.paddle = new Paddle(10, 3, this);
     this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, 3, this);
 
+  }
+
+  disable_start_btn(){
+    document.getElementById("start").disabled = true;
   }
 
   /** start this game animation */  

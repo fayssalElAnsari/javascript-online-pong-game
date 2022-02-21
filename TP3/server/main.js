@@ -15,6 +15,7 @@ const ioController = new IOController(io);
 io.on('connection', socket => {
 	if (io.engine.clientsCount > connectionsLimit) {
 		socket.emit('err', { message: 'reach the limit of connections' })
+		socket.emit("disble_start_btn");
 		socket.disconnect()
 		console.log('Disconnected...');
 		// return
