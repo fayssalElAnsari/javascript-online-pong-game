@@ -7,6 +7,8 @@ import Paddle from './Paddle.js';
  */
 export default class Game {
 
+  #socket;
+
   /**
    * build a Game
    *
@@ -14,9 +16,10 @@ export default class Game {
    */
   constructor(canvas) {
     // création de la socket (connection client server)
-    const socket = io('http://localhost:8080/'); 
-    socket.on( 'disble_start_btn' , () => this.disable_start_btn() );
-    socket.on('set_player_name', (player) => this.set_player_name(player));
+    this.#socket = io('http://localhost:8080/'); 
+
+    this.#socket.on('disble_start_btn' , () => this.disable_start_btn() );
+    this.#socket.on('set_player_name', (player) => this.set_player_name(player));
 
     this.raf = null;
     this.canvas = canvas;
@@ -42,6 +45,7 @@ export default class Game {
   /** stop this game animation */
   stop() {
     window.cancelAnimationFrame(this.raf);
+    this.#socket.emit("leave");
   }
 
   score(){
