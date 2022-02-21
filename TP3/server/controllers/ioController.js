@@ -28,16 +28,7 @@ export default class IOController {
 
     // when user stops playing(presses disconnect) all users disconnect
     stop(){
-      this.#io.fetchSockets()
-    .then((sockets) => {
-      sockets.forEach((socket) => {
-        //do something
-      })
-    })
-    .catch(console.log) 
-
-
-      const sockets = this.#io.fetchSockets().then((sockets) => {
+      this.#io.fetchSockets().then((sockets) => {
         sockets.forEach( socket => {
         socket.disconnect();
       })
