@@ -27,6 +27,9 @@ export default class IOController {
       socket.on('stop moving', () => {
         socket.broadcast.emit('stop_moving_other');
       });
+      socket.on('sync ball', (ball) => {
+        socket.broadcast.emit('sync_ball', ball);
+      })
     }
   
     // just show a simple console log
@@ -40,17 +43,7 @@ export default class IOController {
       })
       });
 
-      // if disconnecting while two or less players disconnect everyone
-      // if(this.#io.clientsCount < 3){
-      //   this.#io.fetchSockets().then((sockets) => {
-      //     sockets.forEach( socket => {
-      //     socket.disconnect();
-      //   })
-      //   });
-      // }
-      
-
-      // this.#players = [];
+      this.#players = [];
     }
 
     // when user stops playing (presses disconnect) all users disconnect

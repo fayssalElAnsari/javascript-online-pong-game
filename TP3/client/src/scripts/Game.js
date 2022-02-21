@@ -26,6 +26,7 @@ export default class Game {
     this.#socket.on('move_other_down', () => this.move_other_player_down());
     this.#socket.on('move_other_up', () => this.move_other_player_up());
     this.#socket.on('stop_moving_other', () => this.stop_moving_other());
+    this.#socket.on('sync_ball', (ball) => this.sync_ball(ball));
 
     this.raf = null;
     this.canvas = canvas;
@@ -33,6 +34,16 @@ export default class Game {
     this.paddle = new Paddle(10, 3, this);
     this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, 3, this);
 
+  }
+
+  send_sync_ball(){
+    this.#socket.emit('sync ball', {x: this.ball.x, y : this.ball.y})
+  }
+
+  sync_ball(ball){
+    console.log("synced ball");
+    this.ball.x = ball.x;
+    this.ball.y = ball.y;
   }
 
   move_other_player_down(){
@@ -93,7 +104,6 @@ export default class Game {
   }
 
   restart(){
-
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
   }
 
@@ -115,14 +125,18 @@ export default class Game {
     this.paddle2.move(ctxt);
     this.paddle2.draw(ctxt);
 
+    if(this.ball.x == this.canvas.width/2){
+      this.send_sync_ball();
+    }
+
     if(this.ball.collisionWith(this.paddle)){
       this.ball.calculateNewShift();
-      
+      this.send_sync_ball();
     }
 
     if(this.ball.collisionWith(this.paddle2)){
       this.ball.calculateNewShift();
-      
+      this.send_sync_ball();
     }
 
   }
