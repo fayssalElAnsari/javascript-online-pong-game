@@ -16,12 +16,18 @@ io.on('connection', socket => {
 	if (io.engine.clientsCount > connectionsLimit) {
 		socket.emit('err', { message: 'reach the limit of connections' })
 		socket.emit("disble_start_btn");
+		socket.emit("set_player_name", {name: "CONNECTION REFUSED :("})
 		socket.disconnect()
 		console.log('Disconnected...');
 		// return
 	} else {
 		ioController.registerSocket(socket);
 		console.log("connected");
+		if(io.engine.clientsCount == 1){
+			socket.emit("set_player_name", {name: "PLAYER 1"})
+		} else {
+			socket.emit("set_player_name", {name: "PLAYER 2"})
+		}
 	}
 
 });

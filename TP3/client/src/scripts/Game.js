@@ -16,6 +16,7 @@ export default class Game {
     // création de la socket (connection client server)
     const socket = io('http://localhost:8080/'); 
     socket.on( 'disble_start_btn' , () => this.disable_start_btn() );
+    socket.on('set_player_name', (player) => this.set_player_name(player));
 
     this.raf = null;
     this.canvas = canvas;
@@ -27,6 +28,10 @@ export default class Game {
 
   disable_start_btn(){
     document.getElementById("start").disabled = true;
+  }
+
+  set_player_name(player){
+    document.getElementById("player").innerHTML = player.name;
   }
 
   /** start this game animation */  
