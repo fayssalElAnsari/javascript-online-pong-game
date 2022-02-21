@@ -17,7 +17,7 @@ io.on('connection', socket => {
 		socket.emit('err', { message: 'reach the limit of connections' })
 		socket.disconnect()
 		console.log('Disconnected...');
-		return
+		// return
 	} else {
 		ioController.registerSocket(socket);
 		console.log("connected");

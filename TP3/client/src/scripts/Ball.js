@@ -6,6 +6,8 @@ const BALL_IMAGE_SRC = './images/balle24.png';
 const SHIFT_X = 6;
 const SHIFT_Y = 4;
 
+const DEBUG = true;
+
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
  */
@@ -59,21 +61,36 @@ export default class Ball extends Mobile {
    */
 
   calculateNewShift(){
-    let n = 4;
-    let partHeight = this.theGame.paddle.height/(n*2);
-    let paddleCenter = this.theGame.paddle.y + this.theGame.paddle.height/2;
-    let currentSeg = -n;
-
-    for(currentSeg; currentSeg <= n; currentSeg = currentSeg+1){
-      if(this.y <= paddleCenter + partHeight*currentSeg){
-        this.shiftY = currentSeg;
+    if(DEBUG){
+      this.shiftX = -this.shiftX;
+    }else {
+      let n = 4;//10 segments au total
+      let partHeight = this.theGame.paddle.height/((n+1)*2);
+      let paddleCenter = this.theGame.paddle.y + this.theGame.paddle.height/2;
+      let currentSeg = 0;
+  
+      let endSeg = n;
+      let step = 1;
+      if (this.y < paddleCenter){
+        endSeg = -endSeg;
+        step = -1;
       }
+  
+      for(currentSeg; currentSeg <= endSeg; currentSeg = currentSeg + step){
+        //  console.log(currentSeg)
+        if(this.y >= paddleCenter*currentSeg*step){
+          this.shiftY = currentSeg * step;
+        }
+      }
+      console.log("shifty=" + this.shiftY);
+  
+      let n2 = 7;
+      this.shiftX = -Math.sign(this.shiftX) * Math.abs(n2 - Math.abs(this.shiftY));
+      // this.shiftX = -this.shiftX;
+      console.log("shiftX=" + this.shiftX);
     }
 
-    let n2 = 7;
-    this.shiftX = -Math.sign(this.shiftX) * Math.abs(n2 - Math.abs(this.shiftY));
-    // this.shiftX = -this.shiftX;
-    console.log(this.shiftX, this.shiftY);
+    
   }
 
 

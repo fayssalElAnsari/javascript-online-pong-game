@@ -4,6 +4,7 @@ import Game from './Game.js';
 
 const init = () => {
   const theField = document.getElementById("field");
+  document.getElementById("start").disabled = true; 
   const theGame = new Game(theField);
 
   window.addEventListener('keydown', theGame.keyDownActionHandler.bind(theGame));

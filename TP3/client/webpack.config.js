@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 module.exports = {
   entry: path.resolve(__dirname, './src/scripts/pong.js'),

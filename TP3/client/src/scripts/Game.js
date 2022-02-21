@@ -13,11 +13,15 @@ export default class Game {
    * @param  {Canvas} canvas the canvas of the game
    */
   constructor(canvas) {
+    // création de la socket (connection client server)
+    const socket = io('http://localhost:8080/'); 
+
     this.raf = null;
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.paddle = new Paddle(10, 3, this);
     this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, 3, this);
+
   }
 
   /** start this game animation */  
@@ -36,6 +40,7 @@ export default class Game {
   }
 
   restart(){
+
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
   }
 
