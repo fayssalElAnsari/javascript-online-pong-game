@@ -8,6 +8,7 @@ const server = http.createServer(
 );
 
 let connectionsLimit = 2;
+const PlayerId = { ONE : 1, TWO : 2};
 
 const io = new ServerIO(server);
 const ioController = new IOController(io);
@@ -24,8 +25,10 @@ io.on('connection', socket => {
 		ioController.registerSocket(socket);
 		console.log("connected");
 		if(io.engine.clientsCount == 1){
+			socket.emit("set_player_id", {id: PlayerId.ONE});
 			socket.emit("set_player_name", {name: "PLAYER 1"})
-		} else {
+		} else if (io.engine.clientsCount == 2) {
+			socket.emit("set_player_id", {id: PlayerId.TWO});
 			socket.emit("set_player_name", {name: "PLAYER 2"})
 		}
 	}

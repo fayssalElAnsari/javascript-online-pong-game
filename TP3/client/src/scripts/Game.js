@@ -1,6 +1,7 @@
 import Ball from './Ball.js';
 import Paddle from './Paddle.js';
 
+const PlayerId = { ONE : 1, TWO : 2};
 
 /**
  * a Game animates a ball bouncing in a canvas
@@ -8,6 +9,7 @@ import Paddle from './Paddle.js';
 export default class Game {
 
   #socket;
+  #playerId;
 
   /**
    * build a Game
@@ -20,6 +22,8 @@ export default class Game {
 
     this.#socket.on('disble_start_btn' , () => this.disable_start_btn() );
     this.#socket.on('set_player_name', (player) => this.set_player_name(player));
+    this.#socket.on('set_player_id', (player) => this.set_player_id(player));
+    this.#socket.on('move_other_down', () => this.move_other_player_down());
 
     this.raf = null;
     this.canvas = canvas;
@@ -29,8 +33,22 @@ export default class Game {
 
   }
 
+  move_other_player_down(){
+    console.log("client " + this.#socket.id + "received move down from server");
+    if(this.#playerId == 1){
+      this.paddle2.moveDown();
+    }else if(this.#playerId == 2){
+      this.paddle.moveDown();
+    }
+  }
+
   disable_start_btn(){
     document.getElementById("start").disabled = true;
+  }
+
+  set_player_id(player){
+    this.#playerId = player.id;
+    console.log(this.#playerId);
   }
 
   set_player_name(player){
@@ -103,13 +121,23 @@ export default class Game {
         break;
         case "ArrowDown":
         case "Down":
-            this.paddle.moveDown();
-            this.paddle2.moveDown();
+            if(this.#playerId == 1){
+              this.paddle.moveDown();
+            }else if (this.#playerId ==2){
+              this.paddle2.moveDown();
+            }
+
+            this.#socket.emit("move down");
             break;
         case "ArrowUp":
         case "Up":
-            this.paddle.moveUp();
-            this.paddle2.moveUp();
+            if(this.#playerId == 1){
+              this.paddle.moveUp();
+            }else if (this.#playerId ==2){
+              this.paddle2.moveUp();
+            }
+            
+            this.#socket.emit("move up");
             break;
         default: return;
     }
@@ -126,9 +154,14 @@ export default class Game {
       case "Up":
       case "ArrowDown":
       case "Down":
-      this.paddle.stopMoving();
-      this.paddle2.stopMoving();
-      break;
+        if(this.#playerId == 1){
+          this.paddle.stopMoving();
+        }else if (this.#playerId ==2){
+          this.paddle2.stopMoving();
+        }
+        
+        this.#socket.emit("stop moving");
+        break;
       default: return;
     }
     event.preventDefault();

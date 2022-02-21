@@ -5,7 +5,7 @@ export default class IOController {
     
     constructor(io) {
       this.#io = io;
-      this.#players = [];
+      this.#players = [];// will take in the socket ids
     }
 
     registerSocket(socket) {
@@ -18,6 +18,16 @@ export default class IOController {
     setupListeners(socket) {
       socket.on('disconnect', () => this.disconnect(socket));
       socket.on('leave', () => this.stop());
+      socket.on('move down', () => {
+        console.log("recevied moved down from: " + socket.id);
+        console.log(this.#players);
+        if(socket.id == this.#players[0]){
+          this.#io.to(this.#players[1]).emit('move_other_down');
+        } else if( socket.id == this.#players[1]){
+          this.#io.to(this.#players[0]).emit('move_other_down');
+          // this.#players[0].emit('move down');
+        }
+      });
     }
   
     // just show a simple console log
@@ -26,7 +36,8 @@ export default class IOController {
       console.log(`disconnection from ${socket.id} (user : ${userName})`);
     }
 
-    // when user stops playing(presses disconnect) all users disconnect
+    // when user stops playing (presses disconnect) all users disconnect
+    // it should be when he refreshes the page also
     stop(){
       this.#io.fetchSockets().then((sockets) => {
         sockets.forEach( socket => {
@@ -34,6 +45,7 @@ export default class IOController {
       })
 
       });
+      this.#players = [];
       
     }
 
