@@ -24,6 +24,8 @@ export default class Game {
     this.#socket.on('set_player_name', (player) => this.set_player_name(player));
     this.#socket.on('set_player_id', (player) => this.set_player_id(player));
     this.#socket.on('move_other_down', () => this.move_other_player_down());
+    this.#socket.on('move_other_up', () => this.move_other_player_up());
+    this.#socket.on('stop_moving_other', () => this.stop_moving_other());
 
     this.raf = null;
     this.canvas = canvas;
@@ -34,13 +36,32 @@ export default class Game {
   }
 
   move_other_player_down(){
-    console.log("client " + this.#socket.id + "received move down from server");
+    // console.log("client " + this.#socket.id + "received move down from server");
     if(this.#playerId == 1){
       this.paddle2.moveDown();
     }else if(this.#playerId == 2){
       this.paddle.moveDown();
     }
   }
+
+  move_other_player_up(){
+    // console.log("client " + this.#socket.id + "received move down from server");
+    if(this.#playerId == 1){
+      this.paddle2.moveUp();
+    }else if(this.#playerId == 2){
+      this.paddle.moveUp();
+    }
+  }
+
+  stop_moving_other(){
+    // console.log("client " + this.#socket.id + "received move down from server");
+    if(this.#playerId == 1){
+      this.paddle2.stopMoving();
+    }else if(this.#playerId == 2){
+      this.paddle.stopMoving();
+    }
+  }
+
 
   disable_start_btn(){
     document.getElementById("start").disabled = true;
