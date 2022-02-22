@@ -2,14 +2,36 @@
 ## Demonstration En Video
 ###### TODO
 
+## TODO
+* [x] EXERCICE 2
+    * [x] creation de `webpack.config.js` dans le dossier client
+    * [x] creation d'un cible `build` dans `package.json`
+    * [x] possibilite d'utiliser le `serveur de development` de `webpack`
+    * [x] mode de `production` dans `webpack.config.json`
+* [ ] EXERCICE 3
+    * [x] class `paddle.js` cree
+    * [x] raquette ajoute a gauche de l'ecran
+    * [ ] appuyer sur `espace` pour relancer la balle
+    * [ ] la `vitesse de deplacement` de la balle depend du `point de collision`
+    * [x] le jeu fonctionne en mode `production` avec le serveur
+* [ ] EXERCICE 4
+    * [x] deuxieme raquette ajoute, collisions geres
+    * [x] les deux raquettes sont deplaces en meme temps (ancienne version)
+    * [ ] la balle s'arrete lors d'un but
+    * [x] autres touches pour controller la deuxieme raquette
+    * [x] les scores de chaque joueur sont affiches sur la page
+    * [x] le jeu fonctionne en mode `production` avec le serveur
+* [ ] EXERCICE 5 
+    * [ ] 
+
 ## Description
 L'objectif est de réaliser une version simplifiée de l'historique jeu `Pong`. La réalisation passera par une mise en place progressive et plusieurs versions successives. A terme, on veut disposer d'une version `réseau` puisque les joueurs pourront d'affronter depuis deux ordinateurs différents.
 
 ## les principes abordeés dans ce projet:
-* [ ] De gérer à la fois le développement côté client et côté serveur
-* [ ] L'utilisation de `Node.js` et `Webpack` pour gérer le code client
-* [ ] L'utilisation d'un serveur web réaliser avec `Node.js`
-* [ ] L'utilisation de `socket.io` pour gérer des communications bi-directionnelles entre le client et le serveur et ainsi permettre le jeu en réseau.
+* [x] De gérer à la fois le développement côté client et côté serveur
+* [x] L'utilisation de `Node.js` et `Webpack` pour gérer le code client
+* [x] L'utilisation d'un serveur web réaliser avec `Node.js`
+* [x] L'utilisation de `socket.io` pour gérer des communications bi-directionnelles entre le client et le serveur et ainsi permettre le jeu en réseau.
 
 # Mise en route
 ## Prérequis
