@@ -22,7 +22,28 @@
     * [x] les scores de chaque joueur sont affiches sur la page
     * [x] le jeu fonctionne en mode `production` avec le serveur
 * [ ] EXERCICE 5 
-    * [ ] 
+    * [x] activation du mode `surveillance` de webpack dans le fichier `webpack.config.js`
+    * [x] choisir le dossier `public` comme destination du travail
+    * [x] le serveur n'accepte que les `deux premieres` connexions
+    * [ ] la connextion est etablie `apres` avoir appuyer sur un bouton
+    * [x] l'interface signale au joueur s'il est `premier`, `deuxieme` ou si la connexion est refusee
+    * [x] le client puisse `se deconnecter` en appuyant sur un bouton
+    * [x] le jeu s'arrete lors de l'appuye sur le bouton `deconnecter` 
+    * [x] les deux clients sont deconnecte apres l'appuye sur le bouton `deconnecter`
+    * [ ] l'interface est retablie au debut apres un deconnexion
+    * [ ] le jeu ne commence que apres une connexion de deux joueurs
+    * [x] le deplacement du raquette de chaque joueur est envoye a l'autre a travers le serveur
+    ###### LE MODE CHOISIS EST D'AVOIR LE MEME POSITIONEMENT POUR LES DEUX INTERFACES DES JOUEURS
+    * [ ] la position de la raquette est aussi envoyer pas seulement la commande de deplacement
+    * [ ] le premier joueur peut `envoyer une nouvelle balle`
+    * [x] `synchronisation` de position de la balle apres chaque `collision` avec les raquettes
+    * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
+    * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
+    ###### BONUS
+    * [ ] gestion et affichage de scores (IN PROGRESS)
+    * [ ] declanchement de la partie apres un certain nombre de buts
+    * [ ] repositionnement des raquettes au centre apres chaque but
+    * [ ] zone de discussion entre les joueurs
 
 ## Description
 L'objectif est de réaliser une version simplifiée de l'historique jeu `Pong`. La réalisation passera par une mise en place progressive et plusieurs versions successives. A terme, on veut disposer d'une version `réseau` puisque les joueurs pourront d'affronter depuis deux ordinateurs différents.
