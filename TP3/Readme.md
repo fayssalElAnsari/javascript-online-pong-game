@@ -40,7 +40,7 @@
     * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
     * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
     ###### BONUS
-    * [ ] apres la deconnextion d'un joueur un message est affiche a l'autre
+    * [x] apres la deconnexion d'un joueur un message est affiche a l'autre
     * [ ] gestion et affichage de scores (IN PROGRESS)
     * [ ] declanchement de la partie apres un certain nombre de buts
     * [ ] repositionnement des raquettes au centre apres chaque but
