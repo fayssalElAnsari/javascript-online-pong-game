@@ -79,7 +79,7 @@ export default class Paddle extends Mobile {
    * @param {*} otherY the other Y position to be compared this y position
    * @returns
    */
-  inSide(otherX,otherY){
+  inSide(otherX, otherY){
     return (otherX >= this.x && otherX <=(this.x+this.img.width) && otherY >= this.y && otherY <= (this.y+this.img.height));
   }
 

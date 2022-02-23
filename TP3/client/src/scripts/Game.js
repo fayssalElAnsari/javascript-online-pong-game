@@ -10,6 +10,7 @@ export default class Game {
 
   #socket;
   #playerId;
+  lost = 0;
 
   /**
    * build a Game
@@ -17,7 +18,6 @@ export default class Game {
    * @param  {Canvas} canvas the canvas of the game
    */
   constructor(canvas) {
-
     this.raf = null;
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
@@ -94,7 +94,7 @@ export default class Game {
 
   connect() {
         // création de la socket (connection client server)
-        this.#socket = io('http://localhost:8080/'); 
+        this.#socket = io('http://localhost:8080/');
 
         this.#socket.on("start_game", () => this.start());
         this.#socket.on('send_new_ball', () => this.restart());
@@ -112,7 +112,6 @@ export default class Game {
         this.#socket.on('sync_paddle', (paddle) => this.sync_paddle(paddle));
 
         this.#socket.on('opponent_disconnected', () => this.opponent_disconnected());
-        
   }
   
   opponent_disconnected(){
@@ -128,16 +127,17 @@ export default class Game {
     setTimeout( () => {
       this.animate();
     }, 1000);
-    
   }
 
   /** stop this game animation */
   stop() {
     window.cancelAnimationFrame(this.raf);
-    this.#socket.emit("leave");
+    this.#socket.disconnect();
   }
 
   score(){
+    // this.ball.x = 10; // translate
+
     window.cancelAnimationFrame(this.raf);
     // this.restart();
   }
@@ -195,10 +195,10 @@ export default class Game {
  keyDownActionHandler(event) {
   switch (event.key) {
         case " ":
-          if(this.#playerId == 1){
+          if(this.lost == this.#playerId){
             this.#socket.emit("send new ball");
-          } else if (this.#playerId == 2){
-            this.set_msg_box({msg_txt: "only player 1 can send new ball"});
+          } else {
+            this.set_msg_box({msg_txt: "You can't send new ball"});
           }       
         break;
         case "ArrowDown":

@@ -2,12 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const PRODUCTION = true;
+const PRODUCTION = false;
 
 module.exports = {
   entry: path.resolve(__dirname, './src/scripts/pong.js'),
   output: {
-    path: (PRODUCTION ? path.resolve(__dirname, '../server/public/dist') :path.resolve(__dirname, 'dist')),
+    path: (PRODUCTION ? path.resolve(__dirname, '../server/public') :path.resolve(__dirname, '../server/public')),
     filename: 'scripts/bundle.js'
   },
   mode :  (PRODUCTION ? 'production' : 'development'),

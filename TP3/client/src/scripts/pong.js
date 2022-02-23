@@ -9,8 +9,7 @@ const init = () => {
 
   window.addEventListener('keydown', theGame.keyDownActionHandler.bind(theGame));
   window.addEventListener('keyup', theGame.keyUpActionHandler.bind(theGame));
-  document.getElementById('start').addEventListener("click", () => startGame(theGame) );
-   
+  document.getElementById('start').addEventListener("click", () => startGame(theGame));
 }
 
 window.addEventListener("load",init);
@@ -30,6 +29,5 @@ const startGame = theGame => {
     document.getElementById('start').value = 'reconnect';
     theGame.stop();
   }
-
   started =! started;
 }

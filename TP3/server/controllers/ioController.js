@@ -36,6 +36,7 @@ export default class IOController {
       socket.on('send new ball', () => {
         this.#io.emit('send_new_ball');
       })
+
     }
   
     // just show a simple console log
@@ -45,9 +46,9 @@ export default class IOController {
       socket.broadcast.emit('opponent_disconnected');
 
       this.#io.fetchSockets().then((sockets) => {
-        sockets.forEach( socket => {
-        socket.disconnect();
-      })
+          sockets.forEach( socket => {
+          socket.disconnect();
+        })
       });
 
       this.#players = [];
@@ -58,14 +59,12 @@ export default class IOController {
     stop(){
       this.#io.fetchSockets().then((sockets) => {
         sockets.forEach( socket => {
-        socket.disconnect();
+          socket.disconnect();
       })
 
       });
       this.#players = [];
       
     }
-
-
 
   }

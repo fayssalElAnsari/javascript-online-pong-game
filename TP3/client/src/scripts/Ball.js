@@ -8,6 +8,8 @@ const SHIFT_Y = 4;
 
 const DEBUG = true;
 
+collision = true;
+
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
  */
@@ -37,10 +39,12 @@ export default class Ball extends Mobile {
       // this.theGame.stop();
       // console.log("P2 score :(");
       document.getElementById('score_p2').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
-      this.theGame.score();
+      this.theGame.lost = 1;
+      this.theGame.score(); //THE ID OF THE PLAYER 2
     } else if (this.x >= this.theGame.canvas.width - this.img.width) {
       // console.log("P1 score :(");
       document.getElementById('score_p1').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
+      this.theGame.lost = 2;
       this.theGame.score();
       
     } else {
