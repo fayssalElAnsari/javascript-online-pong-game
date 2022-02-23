@@ -23,7 +23,7 @@ export default class Game {
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.paddle = new Paddle(10, 3, this);
-    this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width-10, 3, this);
+    this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width - 10, 3, this);
 
   }
 
@@ -64,7 +64,6 @@ export default class Game {
     }
   }
 
-
   disable_start_btn(){
     document.getElementById("start").disabled = true;
   }
@@ -91,6 +90,7 @@ export default class Game {
         this.#socket.on('stop_moving_other', () => this.stop_moving_other());
         this.#socket.on('sync_ball', (ball) => this.sync_ball(ball));
         this.#socket.on('set_msg_box', (msg) => this.set_msg_box(msg));
+        this.#socket.on('send_new_ball', () => this.restart());
   }
 
   set_msg_box(msg){
@@ -110,11 +110,12 @@ export default class Game {
 
   score(){
     window.cancelAnimationFrame(this.raf);
-    this.restart();
+    // this.restart();
   }
 
   restart(){
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
+    this.set_msg_box({msg_txt: ""});
   }
 
   /** animate the game : move and draw */
@@ -163,12 +164,17 @@ export default class Game {
  keyDownActionHandler(event) {
   switch (event.key) {
         case " ":
+          if(this.#playerId == 1){
+            this.#socket.emit("send new ball");
+          } else if (this.#playerId == 2){
+            this.set_msg_box({msg_txt: "only player 1 can send new ball"});
+          }       
         break;
         case "ArrowDown":
         case "Down":
             if(this.#playerId == 1){
               this.paddle.moveDown();
-            }else if (this.#playerId ==2){
+            }else if (this.#playerId == 2){
               this.paddle2.moveDown();
             }
 

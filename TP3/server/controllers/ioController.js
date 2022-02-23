@@ -30,6 +30,9 @@ export default class IOController {
       socket.on('sync ball', (ball) => {
         socket.broadcast.emit('sync_ball', ball);
       })
+      socket.on('send new ball', () => {
+        this.#io.emit('send_new_ball');
+      })
     }
   
     // just show a simple console log
