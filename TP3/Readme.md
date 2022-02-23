@@ -36,7 +36,6 @@
     * [x] le deplacement du raquette de chaque joueur est envoye a l'autre a travers le serveur
     ###### LE MODE CHOISIS EST D'AVOIR LE MEME POSITIONEMENT POUR LES DEUX INTERFACES DES JOUEURS
     * [ ] la position de la raquette est aussi envoyer pas seulement la commande de deplacement
-    * [ ] le premier joueur peut `envoyer une nouvelle balle`
     * [x] `synchronisation` de position de la balle apres chaque `collision` avec les raquettes
     * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
     * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
