@@ -31,7 +31,7 @@
     * [x] le jeu s'arrete lors de l'appuye sur le bouton `deconnecter` 
     * [x] les deux clients sont deconnecte apres l'appuye sur le bouton `deconnecter`
     * [ ] l'interface est retablie au debut apres un deconnexion
-    * [ ] Pour lancer la nouvelle balle le joueur 1 (seulement) appuye sur un bouton
+    * [x] Pour lancer la nouvelle balle le joueur 1 (seulement) appuye sur un bouton
     * [x] le jeu ne commence que apres une connexion de deux joueurs
     * [x] le deplacement du raquette de chaque joueur est envoye a l'autre a travers le serveur
     ###### LE MODE CHOISIS EST D'AVOIR LE MEME POSITIONEMENT POUR LES DEUX INTERFACES DES JOUEURS
