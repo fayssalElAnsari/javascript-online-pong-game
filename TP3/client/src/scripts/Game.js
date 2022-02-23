@@ -32,9 +32,25 @@ export default class Game {
   }
 
   sync_ball(ball){
-    console.log("synced ball");
     this.ball.x = ball.x;
     this.ball.y = ball.y;
+  }
+
+  send_sync_paddle(){
+    if(this.#playerId == 1){
+      this.#socket.emit('sync paddle', {x: this.paddle.x, y : this.paddle.y})
+    }else if(this.#playerId == 2){
+      this.#socket.emit('sync paddle', {x: this.paddle2.x, y : this.paddle2.y})
+    }
+  }
+
+  sync_paddle(paddle){
+    console.log("paddle synced")
+    if(this.#playerId == 1){
+      this.paddle2 = paddle.y;
+    }else if(this.#playerId == 2){
+      this.paddle1 = paddle.y;
+    }
   }
 
   move_other_player_down(){
@@ -82,15 +98,26 @@ export default class Game {
         this.#socket = io('http://localhost:8080/'); 
 
         this.#socket.on("start_game", () => this.start());
-        this.#socket.on('disble_start_btn' , () => this.disable_start_btn() );
+        this.#socket.on('send_new_ball', () => this.restart());
+
+        this.#socket.on('disble_start_btn' , () => this.disable_start_btn());
         this.#socket.on('set_player_name', (player) => this.set_player_name(player));
         this.#socket.on('set_player_id', (player) => this.set_player_id(player));
+        this.#socket.on('set_msg_box', (msg) => this.set_msg_box(msg));
+
         this.#socket.on('move_other_down', () => this.move_other_player_down());
         this.#socket.on('move_other_up', () => this.move_other_player_up());
         this.#socket.on('stop_moving_other', () => this.stop_moving_other());
+
         this.#socket.on('sync_ball', (ball) => this.sync_ball(ball));
-        this.#socket.on('set_msg_box', (msg) => this.set_msg_box(msg));
-        this.#socket.on('send_new_ball', () => this.restart());
+        this.#socket.on('sync_paddle', (paddle) => this.sync_paddle(paddle));
+
+        this.#socket.on('opponent_disconnected', () => this.opponent_disconnected());
+        
+  }
+  
+  opponent_disconnected(){
+    this.set_msg_box({msg_txt: "your opponent left the game"});
   }
 
   set_msg_box(msg){
@@ -172,6 +199,7 @@ export default class Game {
         break;
         case "ArrowDown":
         case "Down":
+            this.send_sync_paddle();
             if(this.#playerId == 1){
               this.paddle.moveDown();
             }else if (this.#playerId == 2){
@@ -182,6 +210,7 @@ export default class Game {
             break;
         case "ArrowUp":
         case "Up":
+          this.send_sync_paddle();
             if(this.#playerId == 1){
               this.paddle.moveUp();
             }else if (this.#playerId ==2){
@@ -205,6 +234,7 @@ export default class Game {
       case "Up":
       case "ArrowDown":
       case "Down":
+        this.send_sync_paddle();
         if(this.#playerId == 1){
           this.paddle.stopMoving();
         }else if (this.#playerId ==2){

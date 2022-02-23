@@ -30,6 +30,9 @@ export default class IOController {
       socket.on('sync ball', (ball) => {
         socket.broadcast.emit('sync_ball', ball);
       })
+      socket.on('sync paddle', (paddle) => {
+        socket.broadcast.emit('send_sync_paddle', paddle);
+      })
       socket.on('send new ball', () => {
         this.#io.emit('send_new_ball');
       })
@@ -39,6 +42,7 @@ export default class IOController {
     disconnect(socket) {
       const userName = this.#players[socket.id] || 'unknown';
       console.log(`disconnection from ${socket.id} (user : ${userName})`);
+      socket.broadcast.emit('opponent_disconnected');
 
       this.#io.fetchSockets().then((sockets) => {
         sockets.forEach( socket => {
