@@ -11,13 +11,13 @@
 * [ ] EXERCICE 3
     * [x] class `paddle.js` cree
     * [x] raquette ajoute a gauche de l'ecran
-    * [ ] appuyer sur `espace` pour relancer la balle
-    * [ ] la `vitesse de deplacement` de la balle depend du `point de collision`
+    * [x] appuyer sur `espace` pour relancer la balle (ancienne version)
+    * [ ] la `vitesse de deplacement` de la balle depend du `point de collision` (IN PROGRESS)
     * [x] le jeu fonctionne en mode `production` avec le serveur
-* [ ] EXERCICE 4
+* [x] EXERCICE 4
     * [x] deuxieme raquette ajoute, collisions geres
     * [x] les deux raquettes sont deplaces en meme temps (ancienne version)
-    * [ ] la balle s'arrete lors d'un but
+    * [x] la balle s'arrete lors d'un but (ancienne version)
     * [x] autres touches pour controller la deuxieme raquette
     * [x] les scores de chaque joueur sont affiches sur la page
     * [x] le jeu fonctionne en mode `production` avec le serveur
@@ -25,13 +25,14 @@
     * [x] activation du mode `surveillance` de webpack dans le fichier `webpack.config.js`
     * [x] choisir le dossier `public` comme destination du travail
     * [x] le serveur n'accepte que les `deux premieres` connexions
-    * [ ] la connextion est etablie `apres` avoir appuyer sur un bouton
+    * [x] la connextion est etablie `apres` avoir appuyer sur un bouton
     * [x] l'interface signale au joueur s'il est `premier`, `deuxieme` ou si la connexion est refusee
     * [x] le client puisse `se deconnecter` en appuyant sur un bouton
     * [x] le jeu s'arrete lors de l'appuye sur le bouton `deconnecter` 
     * [x] les deux clients sont deconnecte apres l'appuye sur le bouton `deconnecter`
     * [ ] l'interface est retablie au debut apres un deconnexion
-    * [ ] le jeu ne commence que apres une connexion de deux joueurs
+    * [ ] Pour lancer la nouvelle balle le joueur 1 (seulement) appuye sur un bouton
+    * [x] le jeu ne commence que apres une connexion de deux joueurs
     * [x] le deplacement du raquette de chaque joueur est envoye a l'autre a travers le serveur
     ###### LE MODE CHOISIS EST D'AVOIR LE MEME POSITIONEMENT POUR LES DEUX INTERFACES DES JOUEURS
     * [ ] la position de la raquette est aussi envoyer pas seulement la commande de deplacement
@@ -40,6 +41,7 @@
     * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
     * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
     ###### BONUS
+    * [ ] apres la deconnextion d'un joueur un message est affiche a l'autre
     * [ ] gestion et affichage de scores (IN PROGRESS)
     * [ ] declanchement de la partie apres un certain nombre de buts
     * [ ] repositionnement des raquettes au centre apres chaque but
