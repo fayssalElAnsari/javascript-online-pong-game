@@ -18,7 +18,6 @@ export default class Game {
    */
   constructor(canvas) {
 
-
     this.raf = null;
     this.canvas = canvas;
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
@@ -126,7 +125,10 @@ export default class Game {
 
   /** start this game animation */  
   start() {
-    this.animate();
+    setTimeout( () => {
+      this.animate();
+    }, 1000);
+    
   }
 
   /** stop this game animation */
@@ -141,8 +143,10 @@ export default class Game {
   }
 
   restart(){
-    this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.set_msg_box({msg_txt: ""});
+    setTimeout( () => {
+      this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
+    }, 1000);
   }
 
   /** animate the game : move and draw */
