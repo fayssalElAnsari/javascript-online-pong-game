@@ -11,6 +11,7 @@ const init = () => {
   window.addEventListener('keyup', theGame.keyUpActionHandler.bind(theGame));
   document.getElementById('start').addEventListener("click", () => startGame(theGame) );
   
+  
 }
 
 window.addEventListener("load",init);
@@ -22,7 +23,8 @@ let started = false;
  */
 const startGame = theGame => {
   if (!started) {
-    theGame.start();
+    // theGame.start();
+    theGame.connect();
     document.getElementById('start').value = 'disconnect';
   }
   else {

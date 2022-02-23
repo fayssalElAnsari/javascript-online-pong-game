@@ -17,16 +17,7 @@ export default class Game {
    * @param  {Canvas} canvas the canvas of the game
    */
   constructor(canvas) {
-    // création de la socket (connection client server)
-    this.#socket = io('http://localhost:8080/'); 
 
-    this.#socket.on('disble_start_btn' , () => this.disable_start_btn() );
-    this.#socket.on('set_player_name', (player) => this.set_player_name(player));
-    this.#socket.on('set_player_id', (player) => this.set_player_id(player));
-    this.#socket.on('move_other_down', () => this.move_other_player_down());
-    this.#socket.on('move_other_up', () => this.move_other_player_up());
-    this.#socket.on('stop_moving_other', () => this.stop_moving_other());
-    this.#socket.on('sync_ball', (ball) => this.sync_ball(ball));
 
     this.raf = null;
     this.canvas = canvas;
@@ -85,6 +76,25 @@ export default class Game {
 
   set_player_name(player){
     document.getElementById("player").innerHTML = player.name;
+  }
+
+  connect() {
+        // création de la socket (connection client server)
+        this.#socket = io('http://localhost:8080/'); 
+
+        this.#socket.on("start_game", () => this.start());
+        this.#socket.on('disble_start_btn' , () => this.disable_start_btn() );
+        this.#socket.on('set_player_name', (player) => this.set_player_name(player));
+        this.#socket.on('set_player_id', (player) => this.set_player_id(player));
+        this.#socket.on('move_other_down', () => this.move_other_player_down());
+        this.#socket.on('move_other_up', () => this.move_other_player_up());
+        this.#socket.on('stop_moving_other', () => this.stop_moving_other());
+        this.#socket.on('sync_ball', (ball) => this.sync_ball(ball));
+        this.#socket.on('set_msg_box', (msg) => this.set_msg_box(msg));
+  }
+
+  set_msg_box(msg){
+    document.getElementById("msg_box").innerHTML = msg.msg_txt;
   }
 
   /** start this game animation */  

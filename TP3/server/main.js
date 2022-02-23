@@ -29,10 +29,13 @@ io.on('connection', socket => {
 		// when the second user is reconnected we will have both users as player2
 		if(io.engine.clientsCount == 1){
 			socket.emit("set_player_id", {id: PlayerId.ONE});
-			socket.emit("set_player_name", {name: "PLAYER 1"})
+			socket.emit("set_player_name", {name: "PLAYER 1"});
+			socket.emit("set_msg_box", {msg_txt: "Waiting for player 2..."});
 		} else if (io.engine.clientsCount == 2) {
 			socket.emit("set_player_id", {id: PlayerId.TWO});
-			socket.emit("set_player_name", {name: "PLAYER 2"})
+			socket.emit("set_player_name", {name: "PLAYER 2"});
+			io.emit("start_game");
+			io.emit("set_msg_box", {msg_txt: ""});
 		}
 	}
 
