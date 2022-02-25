@@ -8,7 +8,7 @@ const SHIFT_Y = 4;
 
 const DEBUG = true;
 
-collision = true;
+let collision = true;
 
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
