@@ -94,7 +94,7 @@ export default class Game {
 
   connect() {
         // création de la socket (connection client server)
-        this.#socket = io('http://localhost:1234/');
+        this.#socket = io('http://localhost:4321/');
 
         this.#socket.on("start_game", () => this.start());
         this.#socket.on('send_new_ball', () => this.restart());
