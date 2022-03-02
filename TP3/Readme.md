@@ -39,7 +39,7 @@
     * [x] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
 * [ ] BONUS
     * [x] apres la deconnexion d'un joueur un message est affiche a l'autre
-    * [x] gestion et affichage de scores (IN PROGRESS)
+    * [x] gestion et affichage de scores
     * [ ] declanchement de la partie apres un certain nombre de buts
     * [x] repositionnement des raquettes au centre apres chaque but
     * [ ] zone de discussion entre les joueurs
