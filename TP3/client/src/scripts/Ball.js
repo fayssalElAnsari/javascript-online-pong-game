@@ -21,7 +21,7 @@ export default class Ball extends Mobile {
    * @param  {number} y       the y coordinate
    * @param  {Game} theGame   the Game this ball belongs to
    */
-  constructor(x, y, theGame) {  
+  constructor(x, y, theGame) {
     super(x, y, BALL_IMAGE_SRC , SHIFT_X, SHIFT_Y);
     this.theGame = theGame;
   }
@@ -50,14 +50,18 @@ export default class Ball extends Mobile {
       }
       super.move();
     }
-    
-    
+
+  }
+
+  startMoving(){
+    this.shiftX = SHIFT_X;
+    this.shiftY = SHIFT_Y;
+    this.theGame.paused = false;
   }
 
   /**
    * on divise la paddle on 
    */
-
   calculateNewShift(){
     if(DEBUG){
       this.shiftX = -this.shiftX;

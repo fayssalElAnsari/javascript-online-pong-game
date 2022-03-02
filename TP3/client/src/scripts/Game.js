@@ -94,7 +94,7 @@ export default class Game {
 
   connect() {
         // création de la socket (connection client server)
-        this.#socket = io('http://localhost:8080/');
+        this.#socket = io('http://localhost:1234/');
 
         this.#socket.on("start_game", () => this.start());
         this.#socket.on('send_new_ball', () => this.restart());
@@ -148,9 +148,13 @@ export default class Game {
 
   restart(){
     this.set_msg_box({msg_txt: ""});
+    this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
+    this.paused = false;
+    this.ball.stopMoving();
+    this.paddle.y = this.canvas.height/2;
+    this.paddle2.y = this.canvas.height/2;
     setTimeout( () => {
-      this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
-      this.paused = false;
+      this.ball.startMoving();
     }, 1000);
   }
 
