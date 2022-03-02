@@ -12,7 +12,6 @@ const MoveState = { UP : 0, DOWN : 1, NONE : 2};
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
  */
 export default class Paddle extends Mobile {
-
   /**  build a ball
    * @param  {number} x       the x coordinate
    * @param  {number} y       the y coordinate
@@ -22,7 +21,6 @@ export default class Paddle extends Mobile {
     super(x, y, BALL_IMAGE_SRC , SHIFT_X, SHIFT_Y);
     this.theGame = theGame;
     this.moving = MoveState.NONE;
-
   }
 
     /**

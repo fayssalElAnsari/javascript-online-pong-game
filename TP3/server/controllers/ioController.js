@@ -13,7 +13,6 @@ export default class IOController {
       this.#players.push(socket.id);
       this.setupListeners(socket);
     }
-  
 
     setupListeners(socket) {
       socket.on('disconnect', () => this.disconnect(socket));
@@ -36,7 +35,7 @@ export default class IOController {
       socket.on('send new ball', () => {
         this.#io.emit('send_new_ball');
       })
-
+      
     }
   
     // just show a simple console log
@@ -47,7 +46,7 @@ export default class IOController {
 
       this.#io.fetchSockets().then((sockets) => {
           sockets.forEach( socket => {
-          socket.disconnect();
+              socket.disconnect();
         })
       });
 

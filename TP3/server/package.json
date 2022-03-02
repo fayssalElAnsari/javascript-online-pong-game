@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node main.js"
   },
-  "author": "YOU",
+  "author": "Fayssal",
   "license": "ISC",
   "dependencies": {
     "socket.io-client": "^4.4.1"

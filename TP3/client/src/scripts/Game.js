@@ -7,10 +7,10 @@ const PlayerId = { ONE : 1, TWO : 2};
  * a Game animates a ball bouncing in a canvas
  */
 export default class Game {
-
   #socket;
   #playerId;
   lost = 0;
+  paused = false;
 
   /**
    * build a Game
@@ -27,7 +27,7 @@ export default class Game {
   }
 
   send_sync_ball(){
-    this.#socket.emit('sync ball', {x: this.ball.x, y : this.ball.y})
+    this.#socket.emit('sync ball', {x: this.ball.x, y : this.ball.y});
   }
 
   sync_ball(ball){
@@ -136,16 +136,21 @@ export default class Game {
   }
 
   score(){
-    // this.ball.x = 10; // translate
-
+    // this.ball.shiftX = -this.ball.shiftX;
+    // this.ball.x = this.ball.x + this.ball.shiftX*10;
+    // this.stop();
     window.cancelAnimationFrame(this.raf);
-    // this.restart();
+    // this.ball.deactivateCollision();
+    this.ball.stopMoving();
+    // console.log("scored");
+    // this.ball = null;
   }
 
   restart(){
     this.set_msg_box({msg_txt: ""});
     setTimeout( () => {
       this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
+      this.paused = false;
     }, 1000);
   }
 
@@ -227,6 +232,7 @@ export default class Game {
     }
     event.preventDefault();
   }
+
   /**
   * Handles key releases.
   *
@@ -251,7 +257,5 @@ export default class Game {
     }
     event.preventDefault();
   }
-
-
 
 }

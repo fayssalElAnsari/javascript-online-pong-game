@@ -3,12 +3,12 @@ import Mobile from './Mobile.js';
 
 // default values for a Ball : image and shifts
 const BALL_IMAGE_SRC = './images/balle24.png';
-const SHIFT_X = 6;
-const SHIFT_Y = 4;
+const SHIFT_X = 4;
+const SHIFT_Y = 3;
 
 const DEBUG = true;
 
-collision = true;
+// let collision = true;
 
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
@@ -30,23 +30,16 @@ export default class Ball extends Mobile {
    * when moving a ball bounces inside the limit of its game's canvas
    */
   move() {
-    if (this.x <= 0){
-      // this.theGame.startGame(this.theGame);
-      
-      // set the game state to stop
-      // when the game stops the button should change and when the user presses
-      // the ball is removed and the game restarts again
-      // this.theGame.stop();
-      // console.log("P2 score :(");
+    if ((this.x) <= 0 && !this.theGame.paused){
       document.getElementById('score_p2').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
       this.theGame.lost = 1;
-      this.theGame.score(); //THE ID OF THE PLAYER 2
-    } else if (this.x >= this.theGame.canvas.width - this.img.width) {
-      // console.log("P1 score :(");
+      this.theGame.score();
+      this.theGame.paused = true;
+    } else if ((this.x >= this.theGame.canvas.width - this.img.width) && !this.theGame.paused) {
       document.getElementById('score_p1').innerHTML = parseInt(document.getElementById('score_p2').innerHTML) + 1;
       this.theGame.lost = 2;
       this.theGame.score();
-      
+      this.theGame.paused = true;
     } else {
       if (this.y <= 0 || (this.y+this.height >= this.theGame.canvas.height)) {
         this.shiftY = - this.shiftY;    // rebond en haut ou en bas
@@ -93,8 +86,6 @@ export default class Ball extends Mobile {
       // this.shiftX = -this.shiftX;
       console.log("shiftX=" + this.shiftX);
     }
-
-    
   }
 
 
@@ -106,6 +97,14 @@ export default class Ball extends Mobile {
    collisionWith(paddlew){
     //  console.log("collision ;)");
     return paddlew.inSide(this.x,this.y);
+  }
+
+  deactivateCollision(){
+    collision = false;
+  }
+
+  activateCollision(){
+    collision = true;
   }
 
 }
