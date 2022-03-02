@@ -8,11 +8,11 @@
     * [x] creation d'un cible `build` dans `package.json`
     * [x] possibilite d'utiliser le `serveur de development` de `webpack`
     * [x] mode de `production` dans `webpack.config.json`
-* [ ] EXERCICE 3
+* [x] EXERCICE 3
     * [x] class `paddle.js` cree
     * [x] raquette ajoute a gauche de l'ecran
     * [x] appuyer sur `espace` pour relancer la balle (ancienne version)
-    * [ ] la `vitesse de deplacement` de la balle depend du `point de collision` (IN PROGRESS)
+    * [x] la `vitesse de deplacement` de la balle depend du `point de collision` (disable debug)
     * [x] le jeu fonctionne en mode `production` avec le serveur
 * [x] EXERCICE 4
     * [x] deuxieme raquette ajoute, collisions geres
@@ -41,9 +41,9 @@
     * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
     ###### BONUS
     * [x] apres la deconnexion d'un joueur un message est affiche a l'autre
-    * [ ] gestion et affichage de scores (IN PROGRESS)
+    * [x] gestion et affichage de scores (IN PROGRESS)
     * [ ] declanchement de la partie apres un certain nombre de buts
-    * [ ] repositionnement des raquettes au centre apres chaque but
+    * [x] repositionnement des raquettes au centre apres chaque but
     * [ ] zone de discussion entre les joueurs
 
 ## Description
@@ -95,10 +95,6 @@ Le dossier `/client` contient notamment un dossier `src/` avec un certain nombre
     *   `scripts/Ball.js` définit la classe Ball. Une balle est un mobile dont le dessin est une balle et qui est placé dans un jeu (`theGame`) fourni à la construction. Lors de son déplacement, la balle reste dans les limites du terrain de jeu défini par le canvas du jeu en rebondissant sur les bords de ce terrain.
     
     *   `/server` est le dossier pour le développement du code pour le serveur : vous y retrouvez une configuration initiale similaire à celle déjà rencontrée et dans laquelle le serveur web mis en place est en mesure de délivrer, telles qu'elles, les ressources statiques placées dans le dossier `server/public`.
-
-## TODO
-
-
 
 # Construit avec
 * <img src="https://image.pngaaa.com/896/2507896-middle.png" width="25"> React - A declarative, efficient, and flexible JavaScript library for building user interfaces
