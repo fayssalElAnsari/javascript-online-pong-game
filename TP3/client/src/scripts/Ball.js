@@ -10,6 +10,7 @@ const DEBUG = true;
 
 // let collision = true;
 
+
 /**
  * a Ball is a mobile with a ball as image and that bounces in a Game (inside the game's canvas)
  */
