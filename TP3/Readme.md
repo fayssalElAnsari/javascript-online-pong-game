@@ -1,6 +1,4 @@
 # Presentation
-## Demonstration En Video
-###### TODO
 
 ## TODO
 * [x] EXERCICE 2
@@ -21,7 +19,7 @@
     * [x] autres touches pour controller la deuxieme raquette
     * [x] les scores de chaque joueur sont affiches sur la page
     * [x] le jeu fonctionne en mode `production` avec le serveur
-* [ ] EXERCICE 5 
+* [x] EXERCICE 5 
     * [x] activation du mode `surveillance` de webpack dans le fichier `webpack.config.js`
     * [x] choisir le dossier `public` comme destination du travail
     * [x] le serveur n'accepte que les `deux premieres` connexions
@@ -39,7 +37,7 @@
     * [x] `synchronisation` de position de la balle apres chaque `collision` avec les raquettes
     * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
     * [x] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
-    ###### BONUS
+* [ ] BONUS
     * [x] apres la deconnexion d'un joueur un message est affiche a l'autre
     * [x] gestion et affichage de scores (IN PROGRESS)
     * [ ] declanchement de la partie apres un certain nombre de buts
