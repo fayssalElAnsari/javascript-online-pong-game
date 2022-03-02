@@ -38,7 +38,7 @@
     * [x] la position de la raquette est aussi envoyer pas seulement la commande de deplacement
     * [x] `synchronisation` de position de la balle apres chaque `collision` avec les raquettes
     * [x] `synchronisation` de position de la balle apres avoir traverser le `milieu du terrain`
-    * [ ] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
+    * [x] modifier les fichiers `client`/`serveur` pour avoir un jeu fonctionel depuis different ordinateurs
     ###### BONUS
     * [x] apres la deconnexion d'un joueur un message est affiche a l'autre
     * [x] gestion et affichage de scores (IN PROGRESS)
