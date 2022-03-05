@@ -100,7 +100,6 @@ Le dossier `/client` contient notamment un dossier `src/` avec un certain nombre
 # Construit avec
 * <img src="https://icon-library.com/images/nodejs-icon/nodejs-icon-7.jpg" width="25">  Node.js - An open source development platform for executing JavaScript code server-side
 * <img src="https://webpack.js.org/icon-pwa-512x512.d3dae4189855b3a72ff9.png" width="25">  Webpack - A module bundler for JavaScript files to be used in a browser
-* <img src="https://ih1.redbubble.net/image.438908244.6144/st,small,507x507-pad,600x600,f8f8f8.u2.jpg" width="25">  Express - A back end web application framework for Node.js
 * <img src="https://icons-for-free.com/iconfiles/png/512/super+tiny+icons+javascript-1324450741921820748.png" width="25">  Javascript  - A programming language that is one of the core technologies on the Web
 * <img src="https://freeiconshop.com/wp-content/uploads/edd/html-flat.png" width="25">  html  - The standard markup language for documents designed to be displayed in a web browser
 * <img src="https://cdn-icons-png.flaticon.com/512/29/29088.png" width="25">  css - A style sheet language used for describing the presentation of a document written in html
