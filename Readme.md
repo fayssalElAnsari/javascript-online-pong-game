@@ -72,13 +72,16 @@ fayssal@mypc:~$ cd TP3
  fayssal@mypc:~$ npm install
  fayssal@mypc:~$ npm run build
 ```
- * démarrer le serveur de développement de *Webpack*
+ * Démarrer le serveur a partir de `./server`:
  ```console
- fayssal@mypc:~$ npm run dev-server
+ fayssal@mypc:~$ nodemon
+ ```
+ * Pour ajouter vos propres modifications au client a partir de `./client` en mode hot-reload:
+  ```console
+ fayssal@mypc:~$ npm run watch
  ```
 
 # Developement
-## Mise En Place (V0)
 ### Hierarchie
 
 * `/client` est le dossier pour le développement du code pour le client. Dans cette première version proposée, le `jeu` consiste simplement en une balle qui rebondit dans les limites d'un terrain.
@@ -95,10 +98,8 @@ Le dossier `/client` contient notamment un dossier `src/` avec un certain nombre
     *   `/server` est le dossier pour le développement du code pour le serveur : vous y retrouvez une configuration initiale similaire à celle déjà rencontrée et dans laquelle le serveur web mis en place est en mesure de délivrer, telles qu'elles, les ressources statiques placées dans le dossier `server/public`.
 
 # Construit avec
-* <img src="https://image.pngaaa.com/896/2507896-middle.png" width="25"> React - A declarative, efficient, and flexible JavaScript library for building user interfaces
 * <img src="https://icon-library.com/images/nodejs-icon/nodejs-icon-7.jpg" width="25">  Node.js - An open source development platform for executing JavaScript code server-side
 * <img src="https://webpack.js.org/icon-pwa-512x512.d3dae4189855b3a72ff9.png" width="25">  Webpack - A module bundler for JavaScript files to be used in a browser
-* <img src="https://ih1.redbubble.net/image.438908244.6144/st,small,507x507-pad,600x600,f8f8f8.u2.jpg" width="25">  Express - A back end web application framework for Node.js
 * <img src="https://icons-for-free.com/iconfiles/png/512/super+tiny+icons+javascript-1324450741921820748.png" width="25">  Javascript  - A programming language that is one of the core technologies on the Web
 * <img src="https://freeiconshop.com/wp-content/uploads/edd/html-flat.png" width="25">  html  - The standard markup language for documents designed to be displayed in a web browser
 * <img src="https://cdn-icons-png.flaticon.com/512/29/29088.png" width="25">  css - A style sheet language used for describing the presentation of a document written in html
