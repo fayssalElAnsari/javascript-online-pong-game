@@ -1,7 +1,7 @@
 import Mobile from './Mobile.js';
 
-// default values for a Ball : image and shifts
-const BALL_IMAGE_SRC = './images/paddle.png';//paddle
+// default values for a paddle : image and shifts
+const BALL_IMAGE_SRC = './images/paddle.png';
 const SHIFT_X = 0;//sans mouvement horizontal
 const SHIFT_Y = 8;
 
@@ -15,7 +15,7 @@ export default class Paddle extends Mobile {
   /**  build a ball
    * @param  {number} x       the x coordinate
    * @param  {number} y       the y coordinate
-   * @param  {Game} theGame   the Game this ball belongs to
+   * @param  {Game} theGame   the Game this paddle belongs to
    */
   constructor(x, y, theGame) {
     super(x, y, BALL_IMAGE_SRC , SHIFT_X, SHIFT_Y);
@@ -24,7 +24,7 @@ export default class Paddle extends Mobile {
   }
 
     /**
-     * the result true / false depends on the moving state of the starship
+     * the result true / false depends on the moving state of the paddle
      * return true if moving up
      */
     getUp() {
@@ -32,7 +32,7 @@ export default class Paddle extends Mobile {
     }
 
     /**
-     * the result true / false depends on the moving state of the starship
+     * the result true / false depends on the moving state of the paddle
      * return true if moving down false if not
      */
     getDown() {
@@ -40,26 +40,27 @@ export default class Paddle extends Mobile {
     }
 
     /**
-     * Move up the starship
+     * Move up the paddle
      */
     moveUp () {
       this.moving = MoveState.UP;
     }
 
     /**
-     * Move down the starShip
+     * Move down the paddle
      */
     moveDown () {
       this.moving = MoveState.DOWN;
     }
 
-    /* Set the starship moving on None, sot the starship doesn't move */
+    /* Set the paddle moving on None, sot the paddle doesn't move */
     stopMoving(){
       this.moving = MoveState.NONE;
     }
 
-    /* Move the starship Down or Up 
-    * @param {*} myCanvas
+    /**  
+     * Move the paddle Down or Up 
+     * @param {*} myCanvas
     */
     move(){
       if(this.getDown()){
@@ -71,8 +72,8 @@ export default class Paddle extends Mobile {
       }
     }
 
-    /**
-   * return true if the shoot is inside the saucer false if not
+  /**
+   * return true if the ball is inside the paddle false if not
    * @param {*} otherX the other X position to be compared to this x position
    * @param {*} otherY the other Y position to be compared this y position
    * @returns

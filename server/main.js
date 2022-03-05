@@ -20,13 +20,10 @@ io.on('connection', socket => {
 		socket.emit("set_player_name", {name: "CONNECTION REFUSED :("});
 		socket.disconnect();
 		console.log('Disconnected...');
-		// return
 	} else {
 		ioController.registerSocket(socket);
 		console.log("connected");
 		console.log(io.engine.clientsCount);
-		// the problem here is it only works on the first connect
-		// when the second user is reconnected we will have both users as player2
 		if(io.engine.clientsCount == 1){
 			socket.emit("set_player_id", {id: PlayerId.ONE});
 			socket.emit("set_player_name", {name: "PLAYER 1"});
@@ -38,7 +35,6 @@ io.on('connection', socket => {
 			io.emit("set_msg_box", {msg_txt: ""});
 		}
 	}
-
 });
 
 server.listen(4321);

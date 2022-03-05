@@ -11,9 +11,10 @@ export default class Game {
   #playerId;
   lost = 0;
   paused = false;
+  SCORE_LIMIT = 100;
 
   /**
-   * build a Game
+   * builds a Game
    *
    * @param  {Canvas} canvas the canvas of the game
    */
@@ -23,18 +24,37 @@ export default class Game {
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
     this.paddle = new Paddle(10, 3, this);
     this.paddle2 = new Paddle(this.canvas.width-this.paddle.img.width - 10, 3, this);
-
   }
 
+  /**
+   * starts the new round after the score limit have been reached
+   */
+  next_round(){
+    
+  }
+
+  /**
+   * envoie l'evenement de synchronisation de la ball
+   * l'object envoie contient la position actuelle de la ball
+   */
   send_sync_ball(){
     this.#socket.emit('sync ball', {x: this.ball.x, y : this.ball.y});
   }
 
+  /**
+   * recoie l'evenement de synchronisation de la balle 
+   * et change la position de la ball si necessaire
+   * @param {*} ball l'objet qui represente la balle
+   */
   sync_ball(ball){
     this.ball.x = ball.x;
     this.ball.y = ball.y;
   }
 
+  /**
+   * envoie l'evenement de synchronisation du paddle du joueur
+   * l'object envoie contient la position actuelle du paddle
+   */
   send_sync_paddle(){
     if(this.#playerId == 1){
       this.#socket.emit('sync paddle', {x: this.paddle.x, y : this.paddle.y})
@@ -43,8 +63,12 @@ export default class Game {
     }
   }
 
+  /**
+   * recoie l'evenement de synchronisation du paddle 
+   * et change la position du paddle si necessaire
+   * @param {*} paddle l'objet qui represente le paddle
+   */
   sync_paddle(paddle){
-    console.log("paddle synced")
     if(this.#playerId == 1){
       this.paddle2 = paddle.y;
     }else if(this.#playerId == 2){
@@ -52,8 +76,10 @@ export default class Game {
     }
   }
 
+  /**
+   * change la position de l'autre joueur vers le bas
+   */
   move_other_player_down(){
-    // console.log("client " + this.#socket.id + "received move down from server");
     if(this.#playerId == 1){
       this.paddle2.moveDown();
     }else if(this.#playerId == 2){
@@ -61,6 +87,9 @@ export default class Game {
     }
   }
 
+  /**
+   * change la position de l'autre joueur vers le haut
+   */
   move_other_player_up(){
     // console.log("client " + this.#socket.id + "received move down from server");
     if(this.#playerId == 1){
@@ -70,6 +99,10 @@ export default class Game {
     }
   }
 
+  /**
+   * fixe la position du paddle de l'autre joueur
+   * apres relachement du bouton
+   */
   stop_moving_other(){
     // console.log("client " + this.#socket.id + "received move down from server");
     if(this.#playerId == 1){
@@ -79,15 +112,26 @@ export default class Game {
     }
   }
 
+  /**
+   * desactivie le bouton start 
+   * lorsque le nombre maximal des joueur est atteint
+   */
   disable_start_btn(){
     document.getElementById("start").disabled = true;
   }
 
+  /**
+   * donne un ID au joueur actuel
+   * @param {*} player 
+   */
   set_player_id(player){
     this.#playerId = player.id;
-    console.log(this.#playerId);
   }
 
+  /**
+   * donne un nom au joueur actuel
+   * @param {*} player 
+   */
   set_player_name(player){
     document.getElementById("player").innerHTML = player.name;
   }
@@ -135,17 +179,13 @@ export default class Game {
     this.#socket.disconnect();
   }
 
+  /** arrete le jeu apres un but */
   score(){
-    // this.ball.shiftX = -this.ball.shiftX;
-    // this.ball.x = this.ball.x + this.ball.shiftX*10;
-    // this.stop();
     window.cancelAnimationFrame(this.raf);
-    // this.ball.deactivateCollision();
     this.ball.stopMoving();
-    // console.log("scored");
-    // this.ball = null;
   }
 
+  /** redemare la partie */
   restart(){
     this.set_msg_box({msg_txt: ""});
     this.ball = new Ball(this.canvas.width/2, this.canvas.height/2, this);
@@ -196,8 +236,8 @@ export default class Game {
 /**
    * Handles key presses.
    *
-   * If arrow up is pressed, the ship is set to move up.
-   * If arrow down is pressed, the ship is set to move down.
+   * If arrow up is pressed, the paddle is set to move up.
+   * If arrow down is pressed, the paddle is set to move down.
    *
    * @param {*} event the event triggered by pressing a key
    */

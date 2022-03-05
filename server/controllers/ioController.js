@@ -8,6 +8,11 @@ export default class IOController {
       this.#players = [];// will take in the socket ids
     }
 
+    /**
+     * registers the socket and adds the socket id to the players list
+     * then sets up all the required listeners for this socket
+     * @param {*} socket 
+     */
     registerSocket(socket) {
       console.log(`new connection with id ${socket.id}`);
       this.#players.push(socket.id);
@@ -38,7 +43,7 @@ export default class IOController {
       
     }
   
-    // just show a simple console log
+    // just show a simple console log on disconnection
     disconnect(socket) {
       const userName = this.#players[socket.id] || 'unknown';
       console.log(`disconnection from ${socket.id} (user : ${userName})`);
