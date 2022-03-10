@@ -80,6 +80,15 @@ fayssal@mypc:~$ cd TP3
   ```console
  fayssal@mypc:~$ npm run watch
  ```
+ * Pour recuperer un version precise de l'application des `tags` on ete ajoute:
+    * pour le debut du development
+        ```console
+        fayssal@mypc:~$ git checkout v0
+        ```
+    * pour la fin du development
+        ```console
+        fayssal@mypc:~$ git checkout v4
+        ```
 
 # Developement
 ### Hierarchie
